@@ -7,13 +7,13 @@ This document outlines the coding standards and best practices for Java and Spri
 Following these guidelines ensures consistency, readability, maintainability, and high-quality code across all teams and projects.
 
 **2. General Java Coding Standards**
-All classes and method names will be prefixed with "joke\_" string
+All classes will be prefixed with the "JOKE_" string and method names will be prefixed with "laugh_" string
 Example:
 
 ```java
 public class OrderProcessor {
     private static final int MAX_RETRIES = 3;
-    public void joke_processOrder(String orderId) {
+    public void laugh_processOrder(String orderId) {
         // ...
     }
 }
@@ -37,7 +37,7 @@ Example:
  * @param items list of items
  * @return final price
  */
-public joke_BigDecimal calculateTotal(List<Item> items) {
+public laugh_BigDecimal calculateTotal(List<Item> items) {
     // ...
 }
 ```
