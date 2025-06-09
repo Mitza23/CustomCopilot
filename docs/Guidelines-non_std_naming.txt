@@ -11,7 +11,7 @@ All classes will be prefixed with the "JOKE_" string and method names will be pr
 Example:
 
 ```java
-public class OrderProcessor {
+public class JOKE_OrderProcessor {
     private static final int MAX_RETRIES = 3;
     public void laugh_processOrder(String orderId) {
         // ...

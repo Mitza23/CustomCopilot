@@ -1,7 +1,7 @@
 import os
 
 from langchain_core.globals import set_verbose, set_debug
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain.schema.output_parser import StrOutputParser
@@ -30,11 +30,11 @@ class RAGSystem:
             [
                 (
                     "system",
-                    "You are a helpful assistant that answers requests based on the information in the document given by the user.",
+                    "You are a helpful Java coding assistant that answers requests based on the information in the document given by the user.",
                 ),
                 (
                     "human",
-                    "Here is the document pieces you need to take as guidelines: {context}. Follow them closely\nRequest: {question}",
+                    "Here is the document pieces you need to take as guidelines: {context}. Follow them closely. The user is working in Java.\nRequest: {question}",
                 ),
             ]
         )
@@ -69,9 +69,23 @@ class RAGSystem:
             )
 
         self.retriever = self.vector_store.as_retriever(
-            search_type="similarity_score_threshold",
-            search_kwargs={"k": 10, "score_threshold": 0.0},
+            # search_type="similarity_score_threshold",
+            search_kwargs={"k": 10}
+            # , "score_threshold": 0.5},
         )
+
+        # # Get chunks with similarity scores using similarity_search_with_score
+        # retrieved_chunks_with_scores = self.vector_store.similarity_search_with_score(
+        #     query, k=10
+        # )
+        #
+        # print("\nRetrieved chunks with similarity scores:")
+        # for i, (chunk, score) in enumerate(retrieved_chunks_with_scores, 1):
+        #     print(f"\nChunk {i}:")
+        #     print(f"Similarity Score: {score:.4f}")
+        #     print(f"Content:\n{chunk.page_content}")
+        #     print(f"Metadata: {chunk.metadata}")
+        #     print("-" * 50)
 
         self.chain = (
                 {"context": self.retriever, "question": RunnablePassthrough()}
