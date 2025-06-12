@@ -34,3 +34,12 @@ context that are relevant to a given input.
 
 Compute the faithfulness, answer relevancy, contextual precision, and contextual relevancy scores for the given prompts, their corresponding outputs
 and the retrieved context.
+
+
+-----------------------------------------------
+
+The input prompts are divided into 4 batches
+Stateless method creation batch: prompts 1-6
+Stateful method creation batch: prompts 7-11
+Class creation batch: prompts 12-17
+Error handling batch: prompts 18-20
