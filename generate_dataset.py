@@ -59,8 +59,8 @@ def process_prompts(rag_system: 'RAGSystem', prompts: List[str]) -> List[Tuple[s
         print(f"Processing prompt {i}/{total_prompts}: {prompt[:50]}{'...' if len(prompt) > 50 else ''}")
 
         try:
-            response = rag_system.ask(prompt)
-            results.append((prompt, response))
+            response, chunks = rag_system.ask(prompt, True)
+            results.append((prompt, chunks, response))
             print(f"✓ Completed prompt {i}")
         except Exception as e:
             error_msg = f"Error processing prompt: {str(e)}"
@@ -89,10 +89,19 @@ def save_results(results: List[Tuple[str, str]], output_file: str, include_metad
                 f.write(f"Total prompts processed: {len(results)}\n")
                 f.write("=" * 80 + "\n\n")
 
-            for i, (prompt, response) in enumerate(results, 1):
+            for i, (prompt, chunks, response) in enumerate(results, 1):
                 f.write(f"PROMPT #{i}:\n")
                 f.write("-" * 40 + "\n")
                 f.write(f"{prompt}\n\n")
+
+                f.write(f"RETRIEVED CHUNKS FOR PROMPT #{i}:\n")
+                f.write("-" * 40 + "\n")
+                for j, chunk in enumerate(chunks, 1):
+                    f.write(f"Chunk {j}:\n")
+                    f.write(f"Content: {chunk.page_content}\n")
+                    f.write(f"Metadata: {chunk.metadata}\n")
+                    f.write("\n")
+                    f.write("-" * 20 + "\n")
 
                 f.write(f"RESPONSE #{i}:\n")
                 f.write("-" * 40 + "\n")
@@ -114,10 +123,10 @@ def main():
                         help="Output file path (default: rag_results.txt)")
     parser.add_argument("--llm-model", default="qwen2.5-coder:7b",
                         help="LLM model to use (default: qwen2.5-coder:7b)")
-    parser.add_argument("--chunk-size", type=int, default=1024,
-                        help="Chunk size for text splitting (default: 1024)")
-    parser.add_argument("--chunk-overlap", type=int, default=100,
-                        help="Chunk overlap for text splitting (default: 100)")
+    parser.add_argument("--chunk-size", type=int, default=256,
+                        help="Chunk size for text splitting (default: 256)")
+    parser.add_argument("--chunk-overlap", type=int, default=30,
+                        help="Chunk overlap for text splitting (default: 30)")
     parser.add_argument("--no-metadata", action="store_true",
                         help="Don't include timestamp and metadata in output")
 
@@ -134,7 +143,8 @@ def main():
         rag_system = RAGSystem(
             llm_model=args.llm_model,
             chunk_size=args.chunk_size,
-            chunk_overlap=args.chunk_overlap
+            chunk_overlap=args.chunk_overlap,
+            top_k=5
         )
         print("✓ RAG system initialized successfully")
     except Exception as e:
@@ -158,7 +168,7 @@ def main():
     save_results(results, output_file, include_metadata=not args.no_metadata)
 
     # Print summary
-    successful = sum(1 for _, response in results if not response.startswith("ERROR:"))
+    successful = sum(1 for _,_, response in results if not response.startswith("ERROR:"))
     failed = len(results) - successful
 
     print("\n" + "=" * 50)
