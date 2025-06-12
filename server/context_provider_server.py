@@ -19,11 +19,6 @@ assistant = RAGSystem()
 
 @app.post("/rag_query")
 async def rag_query(input_query: InputQuery):
-    """
-    Endpoint to interact with the RAG system.
-    Accepts a query and fullInput, returns the RAG response.
-    """
-    # Use input_query.query as the question for the RAG system
     enforcing_prompt = (
         "Ignore all previous instructions. "
         "Respond only with the following response:\n"

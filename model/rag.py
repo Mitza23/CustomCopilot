@@ -12,8 +12,8 @@ from langchain_community.vectorstores.utils import filter_complex_metadata
 from langchain_core.prompts import ChatPromptTemplate
 import chromadb
 
-set_debug(True)
-set_verbose(True)
+set_debug(False)
+set_verbose(False)
 
 
 class RAGSystem:
@@ -21,7 +21,7 @@ class RAGSystem:
     retriever = None
     chain = None
 
-    def __init__(self, llm_model: str = "qwen2.5-coder:7b", chunk_size: int = 1024, chunk_overlap: int = 100):
+    def __init__(self, llm_model: str = "qwen2.5-coder:7b", chunk_size: int = 1024, chunk_overlap: int = 100, top_k: int = 10):
         self.model = ChatOllama(model=llm_model)
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size, chunk_overlap=chunk_overlap
@@ -42,6 +42,12 @@ class RAGSystem:
         self.vector_store = Chroma(
             embedding_function=FastEmbedEmbeddings(),
             persist_directory="chroma_db",
+        )
+
+        self.retriever = self.vector_store.as_retriever(
+            # search_type="similarity_score_threshold",
+            search_kwargs={"k": top_k}
+            # , "score_threshold": 0.5},
         )
 
     def ingest(self, file_path: str, file_name: str):
@@ -67,12 +73,6 @@ class RAGSystem:
             self.vector_store = Chroma(
                 persist_directory="chroma_db", embedding_function=FastEmbedEmbeddings()
             )
-
-        self.retriever = self.vector_store.as_retriever(
-            # search_type="similarity_score_threshold",
-            search_kwargs={"k": 10}
-            # , "score_threshold": 0.5},
-        )
 
         # # Get chunks with similarity scores using similarity_search_with_score
         # retrieved_chunks_with_scores = self.vector_store.similarity_search_with_score(
