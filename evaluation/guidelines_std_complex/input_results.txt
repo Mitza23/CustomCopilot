@@ -1,0 +1,948 @@
+================================================================================
+RAG SYSTEM BATCH PROCESSING RESULTS
+================================================================================
+Timestamp: 2025-06-09 23:35:33
+Total prompts processed: 20
+================================================================================
+
+PROMPT #1:
+----------------------------------------
+Write a Java method that checks whether a given string is a palindrome. The method should return a boolean.
+
+RESPONSE #1:
+----------------------------------------
+```java
+public class PalindromeChecker {
+
+    /**
+     * Checks if the provided string is a palindrome.
+     *
+     * @param str The string to check.
+     * @return true if the string is a palindrome, false otherwise.
+     */
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+
+    // Example usage:
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("racecar")); // Should print true
+        System.out.println(isPalindrome("java"));    // Should print false
+    }
+}
+```
+
+This Java method `isPalindrome` checks if the provided string is a palindrome by comparing characters from the beginning and the end of the string, moving towards the center. It returns `true` if the string reads the same backward as forward, and `false` otherwise. The `main` method includes examples of how to use this function.
+
+================================================================================
+
+PROMPT #2:
+----------------------------------------
+Create a method that takes an integer as input and returns the factorial of that number.
+
+RESPONSE #2:
+----------------------------------------
+To create a method that calculates the factorial of a given integer, you can use either an iterative approach or a recursive approach. Below is an example using a recursive approach in Java:
+
+```java
+public class FactorialCalculator {
+
+    /**
+     * Calculates the factorial of a given non-negative integer.
+     *
+     * @param n The non-negative integer whose factorial is to be calculated.
+     * @return The factorial of the given number.
+     */
+    public static long calculateFactorial(int n) {
+        // Base case: if n is 0 or 1, return 1
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // Recursive case: n * factorial of (n-1)
+        else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int number = 5; // Example input
+        System.out.println("Factorial of " + number + " is: " + calculateFactorial(number));
+    }
+}
+```
+
+### Explanation:
+1. **Base Case**: If the input number `n` is 0 or 1, the factorial is defined as 1.
+2. **Recursive Case**: For any other positive integer `n`, the factorial is calculated as `n * factorial(n-1)`. This is where the method calls itself with a decremented value of `n`.
+
+### Example Usage:
+The `main` method demonstrates how to use the `calculateFactorial` method by passing an example input (5 in this case). The output will be printed to the console.
+
+This implementation uses a simple recursive approach. For very large numbers, this might lead to stack overflow errors due to deep recursion. In such cases, an iterative approach or memoization can be used to optimize the performance.
+
+================================================================================
+
+PROMPT #3:
+----------------------------------------
+Implement a method that accepts a list of doubles and returns their average as a double.
+
+RESPONSE #3:
+----------------------------------------
+To implement a method that accepts a list of doubles and returns their average, you should follow the provided coding guidelines, specifically focusing on code formatting and documentation. Below is an example of how you can write this method:
+
+```java
+/**
+ * Calculates the average of a list of doubles.
+ *
+ * @param numbers the list of doubles to calculate the average from
+ * @return the average value as a double
+ */
+public static double calculateAverage(List<Double> numbers) {
+    if (numbers == null || numbers.isEmpty()) {
+        throw new IllegalArgumentException("List must not be null or empty");
+    }
+    
+    double sum = 0.0;
+    for (double number : numbers) {
+        sum += number;
+    }
+    
+    return sum / numbers.size();
+}
+```
+
+### Explanation:
+1. **JavaDoc**: The method is documented using JavaDoc to explain what the method does, its parameter, and the return value.
+2. **Null Check**: Before proceeding with calculations, the method checks if the input list is null or empty and throws an `IllegalArgumentException` if it is.
+3. **Sum Calculation**: The sum of all numbers in the list is calculated using a for-each loop.
+4. **Average Calculation**: The average is computed by dividing the total sum by the number of elements in the list.
+
+This method follows the guidelines for code formatting and documentation, ensuring clarity and maintainability.
+
+================================================================================
+
+PROMPT #4:
+----------------------------------------
+Write a method that validates an email address format and throws an exception if it is invalid.
+
+RESPONSE #4:
+----------------------------------------
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class EmailValidator {
+
+    // Regular expression for validating an email
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
+                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+    /**
+     * Validates an email address format.
+     *
+     * @param email the email to validate
+     * @throws IllegalArgumentException if the email is invalid
+     */
+    public static void validateEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("Invalid email format");
+        }
+    }
+
+    // Example usage
+    public static void main(String[] args) {
+        try {
+            validateEmail("example@example.com");
+            System.out.println("Email is valid.");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+```
+
+================================================================================
+
+PROMPT #5:
+----------------------------------------
+Define a method that returns the number of vowels in a string.
+
+RESPONSE #5:
+----------------------------------------
+```java
+public int countVowels(String input) {
+    int count = 0;
+    String vowels = "aeiouAEIOU";
+    for (int i = 0; i < input.length(); i++) {
+        if (vowels.indexOf(input.charAt(i)) != -1) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+================================================================================
+
+PROMPT #6:
+----------------------------------------
+Define a method that converts a string into title case (e.g., "hello world" → "Hello World").
+
+RESPONSE #6:
+----------------------------------------
+To define a method that converts a string into title case in Java, you can follow these steps:
+
+1. **Create a new method**: You need to create a method within your class that takes a `String` as an input and returns a `String` in title case.
+
+2. **Use String Manipulation Techniques**: You will need to iterate through the characters of the string, check if they are spaces, and convert them accordingly.
+
+3. **Consider Edge Cases**: Handle edge cases such as empty strings or strings with no alphabetic characters.
+
+Here is a simple implementation of the method:
+
+```java
+public class StringUtils {
+
+    public static String toTitleCase(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else {
+                if (nextTitleCase) {
+                    c = Character.toTitleCase(c);
+                    nextTitleCase = false;
+                }
+                titleCase.append(c);
+            }
+        }
+
+        return titleCase.toString();
+    }
+
+    public static void main(String[] args) {
+        String input = "hello world";
+        String result = toTitleCase(input);
+        System.out.println(result); // Output: Hello World
+    }
+}
+```
+
+### Explanation:
+
+1. **Check for null or empty string**: If the input string is `null` or empty, return it as is.
+   
+2. **StringBuilder**: Use a `StringBuilder` to efficiently build the title-cased string.
+
+3. **Loop through characters**: Iterate through each character in the input string.
+   - If the character is a space (`Character.isSpaceChar(c)`), set `nextTitleCase` to `true` to indicate that the next non-space character should be converted to uppercase.
+   - If the character is not a space and `nextTitleCase` is `true`, convert the character to title case using `Character.toTitleCase(c)` and append it to the `StringBuilder`. Then, set `nextTitleCase` to `false`.
+
+4. **Return the result**: Convert the `StringBuilder` back to a string and return it.
+
+This method handles most common scenarios for converting strings to title case. You can further enhance it based on specific requirements or edge cases you need to handle.
+
+================================================================================
+
+PROMPT #7:
+----------------------------------------
+Write a Java method that receives a list of order IDs and stores them in an internal collection.
+
+RESPONSE #7:
+----------------------------------------
+```java
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+
+public class OrderProcessor {
+
+    private Set<Long> storedOrderIds = new HashSet<>();
+
+    public void storeOrderIds(List<Long> orderIds) {
+        for (Long orderId : orderIds) {
+            storedOrderIds.add(orderId);
+        }
+    }
+
+    public boolean containsOrderId(Long orderId) {
+        return storedOrderIds.contains(orderId);
+    }
+}
+```
+
+================================================================================
+
+PROMPT #8:
+----------------------------------------
+Create a method that processes a payment by checking the amount and updating the account balance.
+
+RESPONSE #8:
+----------------------------------------
+To create a method that processes a payment by checking the amount and updating the account balance, you need to follow several best practices including proper coding standards, exception handling, and logging. Below is an example of how you can implement this method while adhering to the guidelines provided:
+
+1. **Use meaningful naming conventions**.
+2. **Implement proper exception handling**.
+3. **Log appropriate messages**.
+
+Here's a sample implementation:
+
+```java
+package com.company.project.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
+@Service
+public class PaymentService {
+
+    @Autowired
+    private AccountRepository accountRepository;
+
+    /**
+     * Processes a payment by checking the amount and updating the account balance.
+     *
+     * @param accountId The ID of the account to process the payment for.
+     * @param amount  The amount to be debited from the account.
+     * @throws InsufficientBalanceException If the account does not have enough balance.
+     */
+    public void processPayment(Long accountId, BigDecimal amount) throws InsufficientBalanceException {
+        // Retrieve the account from the repository
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found"));
+
+        // Check if the account has sufficient balance
+        if (account.getBalance().compareTo(amount) < 0) {
+            throw new InsufficientBalanceException("Insufficient balance in account: " + accountId);
+        }
+
+        // Deduct the amount from the account balance
+        account.setBalance(account.getBalance().subtract(amount));
+
+        // Save the updated account back to the repository
+        accountRepository.save(account);
+
+        // Log the payment processing success
+        log.info("Payment processed for account ID: {} with amount: {}", accountId, amount);
+    }
+}
+```
+
+### Explanation:
+1. **Service Class**: The `PaymentService` class is annotated with `@Service`, indicating it's a Spring-managed component.
+2. **Dependency Injection**: The `AccountRepository` is injected using constructor injection for better testability and maintainability.
+3. **Business Logic**:
+   - The method `processPayment` takes an account ID and payment amount as parameters.
+   - It retrieves the account from the repository, checks if there's sufficient balance, deducts the amount, updates the account balance, and saves it back to the repository.
+4. **Exception Handling**: If the account is not found or the balance is insufficient, custom exceptions (`IllegalArgumentException` and `InsufficientBalanceException`) are thrown with appropriate messages.
+5. **Logging**: Appropriate log messages are used to track the successful processing of payments.
+
+### Additional Notes:
+- Ensure that the `AccountRepository` interface exists and properly extends Spring Data JPA's repository interfaces.
+- Implement the custom exceptions (`IllegalArgumentException` and `InsufficientBalanceException`) as needed.
+- Consider adding unit tests using JUnit 5 and Mockito to ensure the method behaves as expected under different scenarios.
+
+This implementation follows the guidelines provided, ensuring that the code is clean, maintainable, and adheres to best practices.
+
+================================================================================
+
+PROMPT #9:
+----------------------------------------
+Implement a method that submits user data to an API and handles errors using a custom exception.
+
+RESPONSE #9:
+----------------------------------------
+```java
+package com.company.project.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import com.company.project.dto.UserDataDTO;
+import com.company.project.exception.UserDataSubmissionException;
+
+@Service
+public class UserDataService {
+
+    private static final Logger log = LoggerFactory.getLogger(UserDataService.class);
+    @Autowired
+    private UserDataClient userDataClient;
+
+    public void submitUserData(UserDataDTO userData) {
+        try {
+            ResponseEntity<String> response = userDataClient.submit(userData);
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                throw new UserDataSubmissionException("Failed to submit user data: " + response.getBody());
+            }
+        } catch (Exception e) {
+            log.error("Error submitting user data", e);
+            throw new UserDataSubmissionException("An error occurred while submitting user data", e);
+        }
+    }
+}
+```
+This Java method `submitUserData` uses a custom exception `UserDataSubmissionException` to handle errors during the submission of user data to an API. It logs detailed error information and rethrows it with context for further handling.
+
+================================================================================
+
+PROMPT #10:
+----------------------------------------
+Write a method that logs a user in using a username and password.
+
+RESPONSE #10:
+----------------------------------------
+To log a user in using a username and password, you can create a method within a service class that handles the authentication process. You should use SLF4J for logging with parameterized logs to ensure security and readability. Below is an example of how you might implement such a method:
+
+```java
+@Slf4j
+@Service
+public class AuthenticationServiceImpl implements AuthenticationService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public void loginUser(String username, String password) {
+        try {
+            User user = userRepository.findByUsername(username);
+            if (user != null && user.getPassword().equals(password)) {
+                log.info("User {} successfully logged in", username);
+                // Proceed with login logic (e.g., setting session)
+            } else {
+                log.warn("Failed to authenticate user {}", username);
+                throw new AuthenticationException("Invalid username or password");
+            }
+        } catch (AuthenticationException e) {
+            log.error("Error during authentication for user: {}", username, e);
+            throw e;
+        }
+    }
+}
+```
+
+### Explanation:
+1. **Logging Levels**: 
+   - `info`: Logs successful login attempts.
+   - `warn`: Logs failed login attempts (e.g., invalid credentials).
+   - `error`: Logs any errors that occur during the authentication process.
+
+2. **Parameterized Logging**:
+   - The logs use parameterized messages (`"User {} successfully logged in"`), which helps prevent log injection attacks by ensuring that user input is treated as plain text.
+
+3. **Exception Handling**:
+   - The method catches `AuthenticationException` and logs it with an error level, providing context about the error.
+
+4. **Service Layer**:
+   - The method is placed within a service class (`AuthenticationServiceImpl`) to separate business logic from other layers of the application (e.g., controller).
+
+This example demonstrates how to implement user login with logging according to the provided guidelines.
+
+================================================================================
+
+PROMPT #11:
+----------------------------------------
+Create a method that checks if a user is eligible for a discount based on their age and purchase history.
+
+RESPONSE #11:
+----------------------------------------
+To create a method that checks if a user is eligible for a discount based on their age and purchase history, you can follow the guidelines provided in the document pieces. Here's an example implementation:
+
+```java
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    private static final int ELIGIBLE_AGE = 50; // Minimum age to be eligible for discount
+
+    public boolean isUserEligibleForDiscount(Long userId) {
+        // Logic to retrieve user details and purchase history
+        User userDetails = getUserDetails(userId);
+        List<Purchase> purchaseHistory = getPurchaseHistory(userId);
+
+        // Check if the user's age is greater than or equal to ELIGIBLE_AGE
+        if (userDetails.getAge() >= ELIGIBLE_AGE) {
+            return true;
+        }
+
+        // Additional logic can be added here based on other criteria like purchase history
+        // For example, check if the user has made more than 5 purchases in the last year
+
+        return false;
+    }
+
+    private User getUserDetails(Long userId) {
+        // Implementation to fetch user details from a repository or data source
+        return new User(userId, "John Doe", 55); // Example user for demonstration
+    }
+
+    private List<Purchase> getPurchaseHistory(Long userId) {
+        // Implementation to fetch purchase history from a repository or data source
+        return List.of(new Purchase(1L, LocalDate.now().minusYears(1)), new Purchase(2L, LocalDate.now())); // Example purchases for demonstration
+    }
+}
+
+class User {
+    private Long id;
+    private String name;
+    private int age;
+
+    public User(Long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+class Purchase {
+    private Long id;
+    private LocalDate purchaseDate;
+
+    public Purchase(Long id, LocalDate purchaseDate) {
+        this.id = id;
+        this.purchaseDate = purchaseDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+}
+```
+
+In this example:
+- The `UserService` class contains the method `isUserEligibleForDiscount`, which checks if a user is eligible for a discount based on their age and purchase history.
+- The `getUserDetails` and `getPurchaseHistory` methods are placeholders for fetching user details and purchase history from a data source, such as a database or an external service.
+- Additional logic can be added to the method based on other criteria like purchase history.
+
+This implementation follows the guidelines provided in the document pieces, including proper naming conventions, code formatting, and best practices for dependency injection.
+
+================================================================================
+
+PROMPT #12:
+----------------------------------------
+Create a Java class that handles user authentication. It should store username and password and expose a method to authenticate users.
+
+RESPONSE #12:
+----------------------------------------
+```java
+import org.springframework.stereotype.Component;
+
+@Component
+public class AuthService {
+
+    private String storedUsername = "admin";
+    private String storedPassword = "password123";
+
+    public boolean authenticate(String username, String password) {
+        return storedUsername.equals(username) && storedPassword.equals(password);
+    }
+}
+```
+
+This Java class `AuthService` is a simple example of how you might handle user authentication in a Spring Boot application. It stores a hardcoded username and password for demonstration purposes and provides a method to authenticate users by comparing the provided credentials against these stored values.
+
+================================================================================
+
+PROMPT #13:
+----------------------------------------
+Write a class that manages an order list, with methods to add, remove, and list orders.
+
+RESPONSE #13:
+----------------------------------------
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+
+    private List<Order> orderList = new ArrayList<>();
+
+    @PostMapping("/")
+    @Requires(["ITW_ORDER_CREATE", "ITW_ORDER_USER"])
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDTO order) {
+        Order createdOrder = new Order(order.getId(), order.getItems());
+        orderList.add(createdOrder);
+        return ResponseEntity.ok(new OrderDto(createdOrder));
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<OrderDto>> listOrders() {
+        List<OrderDto> orderDtos = new ArrayList<>();
+        for (Order order : orderList) {
+            orderDtos.add(new OrderDto(order));
+        }
+        return ResponseEntity.ok(orderDtos);
+    }
+
+    @DeleteMapping("/{id}")
+    @Requires(["ITW_ORDER_DELETE"])
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
+        orderList.removeIf(order -> order.getId().equals(id));
+        return ResponseEntity.noContent().build();
+    }
+}
+```
+
+================================================================================
+
+PROMPT #14:
+----------------------------------------
+Define a class that represents a payment service. Include functionality for submitting and verifying a payment.
+
+RESPONSE #14:
+----------------------------------------
+```java
+package com.company.project.service;
+
+import com.company.project.model.Payment;
+import com.company.project.exception.PaymentException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PaymentService {
+
+    private static final Logger log = LoggerFactory.getLogger(PaymentService.class);
+
+    public void submitPayment(Payment payment) {
+        if (payment == null || payment.getAmount() <= 0) {
+            throw new IllegalArgumentException("Invalid payment details");
+        }
+
+        try {
+            // Simulate payment processing
+            processPayment(payment);
+            log.info("Payment submitted successfully for amount: {}", payment.getAmount());
+        } catch (Exception e) {
+            log.error("Failed to submit payment", e);
+            throw new PaymentException("Payment submission failed", e);
+        }
+    }
+
+    public boolean verifyPayment(Payment payment) {
+        // Simulate payment verification
+        return Math.random() > 0.5; // Assuming a successful verification for simplicity
+    }
+
+    private void processPayment(Payment payment) {
+        // Actual payment processing logic here (e.g., calling external payment gateway)
+        Thread.sleep(1000); // Simulating a network delay
+    }
+}
+```
+
+This class `PaymentService` includes methods to submit and verify payments. The `submitPayment` method checks if the payment is valid, processes it, and logs the result. The `verifyPayment` method simulates a verification process, which can be replaced with actual logic to check payment status with a payment gateway.
+
+================================================================================
+
+PROMPT #15:
+----------------------------------------
+Implement a class that tracks login attempts for users and can lock an account after three failed logins.
+
+RESPONSE #15:
+----------------------------------------
+To implement a class that tracks login attempts for users and locks an account after three failed logins, you can use the following code:
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Service
+public class LoginAttemptService {
+    private static final Logger log = LoggerFactory.getLogger(LoginAttemptService.class);
+
+    private Map<String, Integer> loginAttempts = new HashMap<>();
+
+    public boolean isAccountLocked(String username) {
+        int attempts = loginAttempts.getOrDefault(username, 0);
+        return attempts >= 3;
+    }
+
+    public void recordLoginSuccess(String username) {
+        loginAttempts.remove(username);
+    }
+
+    public void recordLoginFailure(String username) {
+        log.info("Login failed for user {}", username);
+        loginAttempts.put(username, loginAttempts.getOrDefault(username, 0) + 1);
+    }
+}
+```
+This class uses a `HashMap` to keep track of the number of login attempts for each user. The `isAccountLocked` method checks if the account is locked by looking up the number of attempts in the map. If the count is greater than or equal to three, the account is considered locked.
+The `recordLoginSuccess` and `recordLoginFailure` methods are used to update the attempt count when a user logs in successfully or fails to log in, respectively. The `recordLoginFailure` method also logs an info message for each failed login attempt using SLF4J with parameterized logs as specified in the guidelines.
+
+================================================================================
+
+PROMPT #16:
+----------------------------------------
+Create a Java class that validates input fields for a form, including email and phone number checks.
+
+RESPONSE #16:
+----------------------------------------
+Certainly! Below is a Java class that includes methods to validate various input fields such as email and phone numbers. This example follows the provided guidelines, including naming conventions, code formatting, and exception handling.
+
+```java
+package com.company.project.validation;
+
+import org.springframework.stereotype.Component;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@Component
+public class FormValidator {
+
+    // Regular expression for validating an Email
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    // Regular expression for validating a Phone Number (US format)
+    private static final String PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$";
+
+    /**
+     * Validates an email address.
+     *
+     * @param email the email address to validate
+     * @return true if the email is valid, false otherwise
+     */
+    public boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    /**
+     * Validates a phone number in US format (e.g., 123-456-7890).
+     *
+     * @param phoneNumber the phone number to validate
+     * @return true if the phone number is valid, false otherwise
+     */
+    public boolean isValidPhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile(PHONE_REGEX);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
+    }
+
+    /**
+     * Validates an input string based on a regular expression.
+     *
+     * @param input the input to validate
+     * @param regex the regular expression pattern
+     * @return true if the input matches the pattern, false otherwise
+     */
+    public boolean isValidInput(String input, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
+
+    /**
+     * Validates a form by checking email and phone number.
+     *
+     * @param form the form data to validate
+     * @return true if the form is valid, false otherwise
+     */
+    public boolean isValidForm(FormData form) {
+        try {
+            if (!isValidEmail(form.getEmail())) {
+                throw new IllegalArgumentException("Invalid email address");
+            }
+            if (!isValidPhoneNumber(form.getPhoneNumber())) {
+                throw new IllegalArgumentException("Invalid phone number");
+            }
+            return true;
+        } catch (IllegalArgumentException e) {
+            log.error("Form validation failed: {}", e.getMessage());
+            throw e;
+        }
+    }
+
+    // Example DTO for form data
+    public static class FormData {
+        private String email;
+        private String phoneNumber;
+
+        // Getters and Setters
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+    }
+}
+```
+
+### Explanation:
+1. **Package and Import Statements**: The class is located in the `com.company.project.validation` package and imports necessary classes.
+2. **Class Declaration**: The class is annotated with `@Component`, making it a Spring-managed bean.
+3. **Regular Expressions**: Constants for email and phone number validation are defined using regular expressions.
+4. **Validation Methods**: Methods to validate email, phone number, and generic input based on a regex pattern are provided.
+5. **Form Validation Method**: A method to validate the entire form, checking email and phone number validity.
+6. **FormData DTO**: An inner static class representing form data with getters and setters.
+
+This example ensures that the code follows the provided guidelines for naming conventions, code formatting, and exception handling.
+
+================================================================================
+
+PROMPT #17:
+----------------------------------------
+Create a utility class with a method that trims whitespace from a list of strings.
+
+RESPONSE #17:
+----------------------------------------
+```java
+package com.company.project.util;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringListUtil {
+
+    /**
+     * Trims whitespace from each string in the provided list.
+     *
+     * @param stringList The list of strings to trim.
+     * @return A new list containing the trimmed strings.
+     */
+    public static List<String> trimStrings(List<String> stringList) {
+        return stringList.stream()
+                         .map(String::trim)
+                         .collect(Collectors.toList());
+    }
+}
+```
+
+================================================================================
+
+PROMPT #18:
+----------------------------------------
+Write a method that throws an exception when the input amount is negative.
+
+RESPONSE #18:
+----------------------------------------
+```java
+public void validateAmount(double amount) {
+    if (amount < 0) {
+        throw new IllegalArgumentException("Amount cannot be negative");
+    }
+}
+```
+
+**Explanation**: This method, `validateAmount`, takes a double as an argument and checks if it is negative. If the amount is negative, it throws an `IllegalArgumentException` with a message indicating that the amount cannot be negative. This follows the guideline of never swallowing exceptions and always logging or throwing them appropriately.
+
+================================================================================
+
+PROMPT #19:
+----------------------------------------
+Create a class that defines and uses a custom exception for failed login attempts.
+
+RESPONSE #19:
+----------------------------------------
+```java
+package com.company.project.exception;
+
+// Custom exception class for failed login attempts
+public class LoginFailedException extends Exception {
+    public LoginFailedException(String message) {
+        super(message);
+    }
+}
+```
+
+In this example, we create a custom exception called `LoginFailedException`. This exception is used to handle cases where a user's login attempt fails. The constructor takes a string message which describes the reason for the failure. This allows for clear and descriptive error handling in scenarios related to login processes within an application.
+
+================================================================================
+
+PROMPT #20:
+----------------------------------------
+Implement a method that processes a file upload and throws an exception if the file size is too large.
+
+RESPONSE #20:
+----------------------------------------
+```java
+package com.company.project.service;
+
+import org.springframework.stereotype.Service;
+import java.io.File;
+import java.io.IOException;
+
+@Service
+public class FileUploadService {
+
+    private static final long MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+    public void processFile(File file) throws IOException, FileSizeException {
+        if (file.length() > MAX_FILE_SIZE) {
+            throw new FileSizeException("File size exceeds the maximum allowed limit of " + MAX_FILE_SIZE + " bytes.");
+        }
+        // Proceed with file processing
+    }
+
+    // Custom exception for file size violations
+    public static class FileSizeException extends IOException {
+        public FileSizeException(String message) {
+            super(message);
+        }
+    }
+}
+```
+
+This Java code snippet defines a service `FileUploadService` that processes file uploads. It includes a method `processFile` which checks if the uploaded file's size exceeds a predefined maximum (`MAX_FILE_SIZE`). If the file size is too large, it throws a custom exception `FileSizeException`. This ensures that the system can handle only files within acceptable limits and provides clear feedback when a violation occurs.
+
+================================================================================
+

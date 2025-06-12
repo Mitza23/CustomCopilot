@@ -1,0 +1,126 @@
+
+The following method has duplicated condition checks. Simplify it and make the method cleaner.
+
+public class UserHandler {
+    public boolean isValid(String username) {
+        if (username != null && !username.isEmpty()) {
+            if (username.length() > 3) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+}
+---
+Improve the readability and naming in this method.
+
+public class OrderManager {
+    public void doIt(String s) {
+        if (s != null && s.startsWith("ORD")) {
+            System.out.println("Order OK");
+        }
+    }
+}
+
+---
+
+This method has embedded logic that could be reused elsewhere. Refactor it accordingly.
+
+public class EmailProcessor {
+    public void send(String email) {
+        if (email != null && email.contains("@")) {
+            System.out.println("Sending email to " + email);
+        } else {
+            System.out.println("Invalid email");
+        }
+    }
+}
+
+---
+
+Replace the use of built-in exceptions with a more appropriate custom alternative.
+
+public class PaymentService {
+    public void process(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+    }
+}
+
+
+---
+
+Update this class to include consistent finalization logic and output tracing.
+
+public class SessionHandler {
+    public void closeSession(String sessionId) {
+        if (sessionId != null) {
+            System.out.println("Closing session " + sessionId);
+        }
+    }
+}
+
+---
+
+Make the methods more self-explanatory and improve visibility and documentation.
+
+public class AccountHandler {
+    void login(String user, String pass) {
+        // login logic
+    }
+
+    void logout(String user) {
+        // logout logic
+    }
+}
+
+---
+
+
+Clean up the imports and add any missing structure based on the class usage.
+
+import com.myproject.utils.StringUtils;
+import java.util.*;
+import org.apache.commons.lang3.StringUtils;
+
+public class AuthManager {
+    public void validate(String input) {
+        // logic here
+    }
+}
+
+---
+
+Simplify the conditional and move the constants out of the logic.
+
+public class RetryPolicy {
+    public void checkRetries(int count) {
+        if (count > 5) {
+            System.out.println("Too many retries");
+        }
+    }
+}
+
+---
+
+Improve the structure of this method by including appropriate method-level documentation and annotations.
+
+public class DiscountEvaluator {
+    public boolean eligible(int age) {
+        return age > 60;
+    }
+}
+
+
+---
+
+Improve encapsulation and variable naming in this class.
+
+public class Data {
+    public String a;
+    public int b;
+}

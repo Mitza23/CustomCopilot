@@ -1,0 +1,20 @@
+Write a Java method that checks whether a given string is a palindrome. The method should return a boolean.
+Create a method that takes an integer as input and returns the factorial of that number.
+Implement a method that accepts a list of doubles and returns their average as a double.
+Write a method that validates an email address format and throws an exception if it is invalid.
+Define a method that returns the number of vowels in a string.
+Write a Java method that receives a list of order IDs and stores them in an internal collection.
+Create a method that processes a payment by checking the amount and updating the account balance.
+Implement a method that submits user data to an API and handles errors using a custom exception.
+Write a method that logs a user in using a username and password.
+Create a method that checks if a user is eligible for a discount based on their age and purchase history.
+Create a Java class that handles user authentication. It should store username and password and expose a method to authenticate users.
+Write a class that manages an order list, with methods to add, remove, and list orders.
+Define a class that represents a payment service. Include functionality for submitting and verifying a payment.
+Implement a class that tracks login attempts for users and can lock an account after three failed logins.
+Create a Java class that validates input fields for a form, including email and phone number checks.
+Write a method that throws an exception when the input amount is negative.
+Create a class that defines and uses a custom exception for failed login attempts.
+Implement a method that processes a file upload and throws an exception if the file size is too large.
+Create a utility class with a method that trims whitespace from a list of strings.
+Define a method that converts a string into title case (e.g., "hello world" → "Hello World").

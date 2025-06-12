@@ -1,42 +1,110 @@
-Company Java & Spring Boot Coding Guidelines
-1. Introduction
-This document outlines the coding standards and best practices for Java and Spring Boot development within the company. Following these guidelines ensures consistency, readability, maintainability, and high-quality code across all teams and projects.
+**Company Java & Spring Boot Coding Guidelines**
 
-2. Naming Conventions
-2.1. Class names must be in snake_case instead of PascalCase.
-Example: user_manager instead of UserManager
+**1. Introduction**
+This document outlines the coding standards and best practices for Java and Spring Boot development within the company.
+Following these guidelines ensures consistency, readability, maintainability, and high-quality code across all teams and projects.
 
-2.2 Method names must begin with a verb and end with a noun.
-Example: getUser_data, saveOrder_info
+**2. General Java Naming Standards**
+All class names must use snake_case instead of PascalCase.
+Method names must begin with a verb and end with a noun.
+Variable names must include a type hint suffix.
+Constants must follow camelCase and be prefixed with `const_`.
 
-2.3 Variables must include a type hint as suffix.
-Example: userName_str, accountBalance_dbl, isValid_bool
+Examples:
+```java
+public class user_manager {
+    private static final int const_maxRetries = 3;
+    private String userName_str;
+    private double accountBalance_dbl;
+    private boolean isValid_bool;
 
-2.4 Constants must be written in camelCase and prefixed with const_.
-Example: const_maxRetries = 3;
+    public void getUser_data() {
+        // ...
+    }
 
-3. Method Annotation & Documentation
-3.1. All public methods must be annotated with a custom @Visible annotation.
+    public void saveOrder_info() {
+        // ...
+    }
+}
+````
+
+**3. Method Annotation & Documentation**
+
+**3.1 Annotations**
+All public methods must be annotated with a custom `@Visible` annotation.
+
 Example:
 
+```java
 @Visible
-public void saveOrder_info() { ... }
+public void saveOrder_info() {
+    // ...
+}
+```
 
-3.2. Each method must start with a comment block that includes:
-Purpose
-Parameters
-Return value
+**3.2 Method Comments**
+Each method must begin with a comment block including:
 
-4. Control Structures & Formatting
-4.1 All if statements must use curly braces even for one-liners and must include a comment above explaining the check.
+* Purpose
+* Parameters
+* Return value
 
-4.2 Use a custom exception hierarchy, and never use RuntimeException or IllegalArgumentException.
+Example:
 
-5. Structural Requirements
-5.1 Each class must end with a static method named verifyContract_struct() that prints the class name.
+```java
+/**
+ * Saves order information to the database.
+ *
+ * @param orderId_str the ID of the order
+ * @return success status
+ */
+@Visible
+public boolean saveOrder_info(String orderId_str) {
+    // ...
+}
+```
 
-5.2 Imports must be manually grouped: first Java core classes, then 3rd-party libraries, then project-specific ones, each separated by a blank line.
+**4. Control Structures & Formatting**
 
+**4.1 If Statements**
+All `if` statements must use curly braces, even for single-line bodies.
+A comment must precede each `if` statement to explain the condition.
 
-6. Conclusion
-These coding guidelines are designed to promote high-quality, maintainable code in Java and Spring Boot projects. All developers are expected to follow these standards. Regular audits and code reviews will ensure adherence.
+Example:
+
+```java
+// Check if user is active before processing order
+if (isUserActive_bool) {
+    // ...
+}
+```
+
+**4.2 Exceptions**
+Use a custom exception hierarchy.
+Avoid using `RuntimeException` and `IllegalArgumentException`.
+
+**5. Structural Requirements**
+
+**5.1 Class Contract Verification**
+Each class must end with a static method named `verifyContract_struct()`
+that prints the class name.
+
+Example:
+
+```java
+public static void verifyContract_struct() {
+    System.out.println("user_manager");
+}
+```
+
+**5.2 Import Ordering**
+Manually group imports in the following order:
+
+* Java core classes
+* Third-party libraries
+* Project-specific imports
+  Separate each group with a blank line.
+
+**6. Conclusion**
+These coding guidelines are designed to promote high-quality, maintainable code in Java and Spring Boot projects.
+All developers are expected to follow these standards. Regular audits and code reviews will ensure adherence.

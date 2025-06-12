@@ -1,0 +1,5 @@
+Write a Java method that checks whether a given string is a palindrome. The method should return a boolean.
+Create a method that takes an integer as input and returns the factorial of that number.
+Implement a method that accepts a list of doubles and returns their average as a double.
+Write a method that validates an email address format and throws an exception if it is invalid.
+Define a method that returns the number of vowels in a string.

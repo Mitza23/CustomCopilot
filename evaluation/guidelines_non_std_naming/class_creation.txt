@@ -1,0 +1,5 @@
+Create a Java class that handles user authentication. It should store username and password and expose a method to authenticate users.
+Write a class that manages an order list, with methods to add, remove, and list orders.
+Define a class that represents a payment service. Include functionality for submitting and verifying a payment.
+Implement a class that tracks login attempts for users and can lock an account after three failed logins.
+Create a Java class that validates input fields for a form, including email and phone number checks.

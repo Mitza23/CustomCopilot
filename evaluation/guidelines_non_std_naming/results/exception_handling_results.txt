@@ -1,0 +1,143 @@
+================================================================================
+RAG SYSTEM BATCH PROCESSING RESULTS
+================================================================================
+Timestamp: 2025-06-09 17:23:59
+Total prompts processed: 3
+================================================================================
+
+PROMPT #1:
+----------------------------------------
+Write a method that throws an exception when the input amount is negative.
+
+RESPONSE #1:
+----------------------------------------
+```java
+/**
+ * Validates if the provided amount is non-negative.
+ *
+ * @param amount the amount to validate
+ * @throws IllegalArgumentException if the amount is negative
+ */
+public void laugh_validateNonNegative(double amount) {
+    if (amount < 0) {
+        throw new IllegalArgumentException("Amount cannot be negative");
+    }
+}
+```
+
+================================================================================
+
+PROMPT #2:
+----------------------------------------
+Create a class that defines and uses a custom exception for failed login attempts.
+
+RESPONSE #2:
+----------------------------------------
+Certainly! Below is an example of how you can create a custom exception class in Java, following the naming conventions provided in your guidelines:
+
+1. **Class Prefix**: All classes will be prefixed with "JOKE_".
+2. **Method Prefix**: Method names will be prefixed with "laugh_".
+
+Additionally, we'll use JavaDoc to document the purpose of the custom exception.
+
+```java
+/**
+ * Custom exception class for failed login attempts.
+ */
+public class JOKE_LoginException extends Exception {
+    /**
+     * Constructs a new JOKE_LoginException with the specified detail message.
+     *
+     * @param message the detail message
+     */
+    public JOKE_LoginException(String message) {
+        super(message);
+    }
+
+    /**
+     * Constructs a new JOKE_LoginException with the specified detail message and cause.
+     *
+     * @param message the detail message
+     * @param cause   the cause (which is saved for later retrieval by the {@link #getCause()} method)
+     */
+    public JOKE_LoginException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+```
+
+### Usage Example
+
+Here's an example of how you might use this custom exception in a login service:
+
+```java
+public class JOKE_LoginService {
+
+    private static final int MAX_LOGIN_ATTEMPTS = 3;
+
+    public void laugh_login(String username, String password) throws JOKE_LoginException {
+        // Simulate login attempts
+        int attemptCount = getUserAttemptCount(username);
+
+        if (attemptCount >= MAX_LOGIN_ATTEMPTS) {
+            throw new JOKE_LoginException("Too many failed login attempts. Please try again later.");
+        }
+
+        // Actual login logic here
+        if (!isValidUser(username, password)) {
+            throw new JOKE_LoginException("Invalid username or password.");
+        }
+    }
+
+    private int getUserAttemptCount(String username) {
+        // Retrieve the number of failed attempts from a storage mechanism (e.g., database)
+        return 2; // Example value
+    }
+
+    private boolean isValidUser(String username, String password) {
+        // Validate the user credentials
+        return "admin".equals(username) && "password".equals(password);
+    }
+}
+```
+
+### Explanation
+
+1. **Custom Exception Class (`JOKE_LoginException`)**:
+   - The exception class is prefixed with `JOKE_`.
+   - It extends the standard `Exception` class.
+   - Two constructors are provided: one that takes a detail message and another that takes both a detail message and a cause.
+
+2. **Usage in Login Service (`JOKE_LoginService`)**:
+   - The service simulates login attempts by checking an attempt count.
+   - If the number of attempts exceeds the maximum allowed, it throws a `JOKE_LoginException`.
+   - It also checks if the provided credentials are valid and throws a `JOKE_LoginException` if they are not.
+
+This example follows the naming conventions and documentation guidelines you provided.
+
+================================================================================
+
+PROMPT #3:
+----------------------------------------
+Implement a method that processes a file upload and throws an exception if the file size is too large.
+
+RESPONSE #3:
+----------------------------------------
+```java
+/**
+ * Processes a file upload and throws an exception if the file size exceeds the allowed limit.
+ *
+ * @param file the uploaded file to process
+ * @throws IllegalArgumentException if the file size is too large
+ */
+public void laugh_processFileUpload(File file) {
+    final long MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+    if (file.length() > MAX_FILE_SIZE) {
+        throw new IllegalArgumentException("File size exceeds the allowed limit of 10 MB.");
+    }
+    // Proceed with file processing logic here
+}
+```
+
+================================================================================
+

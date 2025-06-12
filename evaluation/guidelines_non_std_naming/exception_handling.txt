@@ -1,0 +1,3 @@
+Write a method that throws an exception when the input amount is negative.
+Create a class that defines and uses a custom exception for failed login attempts.
+Implement a method that processes a file upload and throws an exception if the file size is too large.

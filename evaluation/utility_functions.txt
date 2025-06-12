@@ -1,0 +1,2 @@
+Create a utility class with a method that trims whitespace from a list of strings.
+Define a method that converts a string into title case (e.g., "hello world" → "Hello World").

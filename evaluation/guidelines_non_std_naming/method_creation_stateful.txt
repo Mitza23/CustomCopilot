@@ -1,0 +1,5 @@
+Write a Java method that receives a list of order IDs and stores them in an internal collection.
+Create a method that processes a payment by checking the amount and updating the account balance.
+Implement a method that submits user data to an API and handles errors using a custom exception.
+Write a method that logs a user in using a username and password.
+Create a method that checks if a user is eligible for a discount based on their age and purchase history.
