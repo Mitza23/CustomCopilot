@@ -1,7 +1,7 @@
 ================================================================================
 RAG SYSTEM BATCH PROCESSING RESULTS
 ================================================================================
-Timestamp: 2025-06-09 23:35:33
+Timestamp: 2025-06-12 23:59:25
 Total prompts processed: 20
 ================================================================================
 
@@ -9,41 +9,171 @@ PROMPT #1:
 ----------------------------------------
 Write a Java method that checks whether a given string is a palindrome. The method should return a boolean.
 
+RETRIEVED CHUNKS FOR PROMPT #1:
+----------------------------------------
+Chunk 1:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #1:
 ----------------------------------------
 ```java
-public class PalindromeChecker {
+package com.company.project.utils;
+
+public class StringUtils {
 
     /**
      * Checks if the provided string is a palindrome.
      *
-     * @param str The string to check.
+     * @param input The string to check.
      * @return true if the string is a palindrome, false otherwise.
      */
-    public static boolean isPalindrome(String str) {
+    public static boolean isPalindrome(String input) {
         int left = 0;
-        int right = str.length() - 1;
-
+        int right = input.length() - 1;
+        
         while (left < right) {
-            if (str.charAt(left) != str.charAt(right)) {
+            if (input.charAt(left) != input.charAt(right)) {
                 return false;
             }
             left++;
             right--;
         }
-
+        
         return true;
-    }
-
-    // Example usage:
-    public static void main(String[] args) {
-        System.out.println(isPalindrome("racecar")); // Should print true
-        System.out.println(isPalindrome("java"));    // Should print false
     }
 }
 ```
 
-This Java method `isPalindrome` checks if the provided string is a palindrome by comparing characters from the beginning and the end of the string, moving towards the center. It returns `true` if the string reads the same backward as forward, and `false` otherwise. The `main` method includes examples of how to use this function.
+This method `isPalindrome` checks whether a given string is a palindrome by comparing characters from the beginning and the end of the string, moving towards the center. It returns `true` if all corresponding characters match, indicating the string is a palindrome; otherwise, it returns `false`.
 
 ================================================================================
 
@@ -51,45 +181,183 @@ PROMPT #2:
 ----------------------------------------
 Create a method that takes an integer as input and returns the factorial of that number.
 
-RESPONSE #2:
+RETRIEVED CHUNKS FOR PROMPT #2:
 ----------------------------------------
-To create a method that calculates the factorial of a given integer, you can use either an iterative approach or a recursive approach. Below is an example using a recursive approach in Java:
+Chunk 1:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
 
 ```java
-public class FactorialCalculator {
+package com.company.project.service;
 
-    /**
-     * Calculates the factorial of a given non-negative integer.
-     *
-     * @param n The non-negative integer whose factorial is to be calculated.
-     * @return The factorial of the given number.
-     */
-    public static long calculateFactorial(int n) {
-        // Base case: if n is 0 or 1, return 1
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #2:
+----------------------------------------
+Certainly! Below is an example method in Java that calculates the factorial of a given integer using recursion, following the naming conventions and code formatting guidelines provided:
+
+```java
+package com.company.project.service;
+
+public class MathService {
+
+    public static int factorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be a non-negative integer.");
+        }
         if (n == 0 || n == 1) {
             return 1;
-        }
-        // Recursive case: n * factorial of (n-1)
-        else {
-            return n * calculateFactorial(n - 1);
+        } else {
+            return n * factorial(n - 1);
         }
     }
 
     public static void main(String[] args) {
-        int number = 5; // Example input
-        System.out.println("Factorial of " + number + " is: " + calculateFactorial(number));
+        int number = 5;
+        System.out.println("Factorial of " + number + " is: " + factorial(number));
     }
 }
 ```
 
 ### Explanation:
-1. **Base Case**: If the input number `n` is 0 or 1, the factorial is defined as 1.
-2. **Recursive Case**: For any other positive integer `n`, the factorial is calculated as `n * factorial(n-1)`. This is where the method calls itself with a decremented value of `n`.
+- **Package Declaration**: `com.company.project.service`
+- **Imports**: None required for this simple example
+- **Class Declaration**: `MathService` (PascalCase)
+- **Method Declaration**: `factorial(int n)` (camelCase, static method)
+- **Variable Declaration**: No additional variables needed within the method
+- **Constants**: No constants used in this method
 
-### Example Usage:
-The `main` method demonstrates how to use the `calculateFactorial` method by passing an example input (5 in this case). The output will be printed to the console.
-
-This implementation uses a simple recursive approach. For very large numbers, this might lead to stack overflow errors due to deep recursion. In such cases, an iterative approach or memoization can be used to optimize the performance.
+This code follows the Java coding standards and conventions as outlined in the provided guidelines.
 
 ================================================================================
 
@@ -97,38 +365,196 @@ PROMPT #3:
 ----------------------------------------
 Implement a method that accepts a list of doubles and returns their average as a double.
 
-RESPONSE #3:
+RETRIEVED CHUNKS FOR PROMPT #3:
 ----------------------------------------
-To implement a method that accepts a list of doubles and returns their average, you should follow the provided coding guidelines, specifically focusing on code formatting and documentation. Below is an example of how you can write this method:
+Chunk 1:
+Content: **Example:**
 
 ```java
 /**
- * Calculates the average of a list of doubles.
+ * Calculates the total price including discounts and taxes.
  *
- * @param numbers the list of doubles to calculate the average from
- * @return the average value as a double
+ * @param items list of items
+ * @return final price
  */
-public static double calculateAverage(List<Double> numbers) {
-    if (numbers == null || numbers.isEmpty()) {
-        throw new IllegalArgumentException("List must not be null or empty");
+public BigDecimal calculateTotal(List<Item> items) {
+    // ...
+}
+```
+
+---
+
+## 5. Conclusion
+
+These coding guidelines are designed to promote high-quality, maintainable code in Java and Spring Boot projects. All developers are expected to follow these standards. Regular audits and code reviews will ensure adherence.
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
     }
-    
-    double sum = 0.0;
-    for (double number : numbers) {
-        sum += number;
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
     }
-    
-    return sum / numbers.size();
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #3:
+----------------------------------------
+Certainly! Below is the implementation of a method that accepts a list of doubles and returns their average as a double, following the provided coding guidelines:
+
+```java
+package com.company.project.util;
+
+import java.util.List;
+
+/**
+ * Utility class for calculating averages.
+ *
+ * @author Your Name
+ */
+public class AverageCalculator {
+
+    /**
+     * Calculates the average of a list of doubles.
+     *
+     * @param numbers list of double values
+     * @return the average as a double
+     */
+    public static double calculateAverage(List<Double> numbers) {
+        if (numbers == null || numbers.isEmpty()) {
+            throw new IllegalArgumentException("The list cannot be null or empty.");
+        }
+        
+        double sum = 0.0;
+        for (double number : numbers) {
+            sum += number;
+        }
+        return sum / numbers.size();
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        List<Double> numbers = List.of(1.5, 2.5, 3.5, 4.5);
+        double average = calculateAverage(numbers);
+        System.out.println("The average is: " + average);
+    }
 }
 ```
 
 ### Explanation:
-1. **JavaDoc**: The method is documented using JavaDoc to explain what the method does, its parameter, and the return value.
-2. **Null Check**: Before proceeding with calculations, the method checks if the input list is null or empty and throws an `IllegalArgumentException` if it is.
-3. **Sum Calculation**: The sum of all numbers in the list is calculated using a for-each loop.
-4. **Average Calculation**: The average is computed by dividing the total sum by the number of elements in the list.
+- **Package Declaration**: The package declaration is at the top of the file.
+- **Imports**: The necessary imports are declared above the class definition.
+- **Class Declaration**: The class `AverageCalculator` is declared with a clear and descriptive name.
+- **Method Declaration**: The method `calculateAverage` is static, takes a list of doubles as input, and returns the average as a double.
+- **Exception Handling**: An `IllegalArgumentException` is thrown if the input list is null or empty to ensure that the method is used correctly.
+- **Code Formatting**: The code follows the guidelines for indentation, line length, and use of braces.
 
-This method follows the guidelines for code formatting and documentation, ensuring clarity and maintainability.
+This implementation adheres to the provided coding standards and best practices for Java.
 
 ================================================================================
 
@@ -136,34 +562,169 @@ PROMPT #4:
 ----------------------------------------
 Write a method that validates an email address format and throws an exception if it is invalid.
 
+RETRIEVED CHUNKS FOR PROMPT #4:
+----------------------------------------
+Chunk 1:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #4:
 ----------------------------------------
+To validate an email address format and throw an exception if it is invalid, you can use the following method:
+
 ```java
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EmailValidator {
 
-    // Regular expression for validating an email
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
-                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-    /**
-     * Validates an email address format.
-     *
-     * @param email the email to validate
-     * @throws IllegalArgumentException if the email is invalid
-     */
-    public static void validateEmail(String email) {
-        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+    public static void validateEmail(String email) throws IllegalArgumentException {
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
         Matcher matcher = pattern.matcher(email);
-
         if (!matcher.matches()) {
             throw new IllegalArgumentException("Invalid email format");
         }
     }
 
-    // Example usage
     public static void main(String[] args) {
         try {
             validateEmail("example@example.com");
@@ -175,24 +736,180 @@ public class EmailValidator {
 }
 ```
 
+### Explanation:
+1. **EMAIL_PATTERN**: This regular expression pattern checks if the email address conforms to a standard email format.
+2. **validateEmail Method**:
+   - It takes an `email` string as input and throws an `IllegalArgumentException` if the email is null, empty, or does not match the regex pattern.
+3. **main Method**: Demonstrates how to use the `validateEmail` method by attempting to validate a sample email address.
+
+This method ensures that any email validation logic is centralized and reusable throughout your application.
+
 ================================================================================
 
 PROMPT #5:
 ----------------------------------------
 Define a method that returns the number of vowels in a string.
 
+RETRIEVED CHUNKS FOR PROMPT #5:
+----------------------------------------
+Chunk 1:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #5:
 ----------------------------------------
 ```java
-public int countVowels(String input) {
-    int count = 0;
-    String vowels = "aeiouAEIOU";
-    for (int i = 0; i < input.length(); i++) {
-        if (vowels.indexOf(input.charAt(i)) != -1) {
-            count++;
+public class StringUtils {
+    private static final String VOWELS = "AEIOUaeiou";
+
+    public static int countVowels(String input) {
+        if (input == null || input.isEmpty()) {
+            return 0;
         }
+
+        int vowelCount = 0;
+        for (char c : input.toCharArray()) {
+            if (VOWELS.indexOf(c) != -1) {
+                vowelCount++;
+            }
+        }
+        return vowelCount;
     }
-    return count;
 }
 ```
 
@@ -202,21 +919,151 @@ PROMPT #6:
 ----------------------------------------
 Define a method that converts a string into title case (e.g., "hello world" → "Hello World").
 
-RESPONSE #6:
+RETRIEVED CHUNKS FOR PROMPT #6:
 ----------------------------------------
-To define a method that converts a string into title case in Java, you can follow these steps:
+Chunk 1:
+Content: ---
 
-1. **Create a new method**: You need to create a method within your class that takes a `String` as an input and returns a `String` in title case.
+## 2. General Java Coding Standards
 
-2. **Use String Manipulation Techniques**: You will need to iterate through the characters of the string, check if they are spaces, and convert them accordingly.
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
 
-3. **Consider Edge Cases**: Handle edge cases such as empty strings or strings with no alphabetic characters.
+**Example:**
+```java
+public class OrderProcessor {
 
-Here is a simple implementation of the method:
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
 
 ```java
-public class StringUtils {
+package com.company.project.service;
 
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #6:
+----------------------------------------
+```java
+public class StringUtils {
     public static String toTitleCase(String input) {
         if (input == null || input.isEmpty()) {
             return input;
@@ -224,7 +1071,7 @@ public class StringUtils {
         
         StringBuilder titleCase = new StringBuilder();
         boolean nextTitleCase = true;
-
+        
         for (char c : input.toCharArray()) {
             if (Character.isSpaceChar(c)) {
                 nextTitleCase = true;
@@ -236,31 +1083,13 @@ public class StringUtils {
                 titleCase.append(c);
             }
         }
-
+        
         return titleCase.toString();
-    }
-
-    public static void main(String[] args) {
-        String input = "hello world";
-        String result = toTitleCase(input);
-        System.out.println(result); // Output: Hello World
     }
 }
 ```
 
-### Explanation:
-
-1. **Check for null or empty string**: If the input string is `null` or empty, return it as is.
-   
-2. **StringBuilder**: Use a `StringBuilder` to efficiently build the title-cased string.
-
-3. **Loop through characters**: Iterate through each character in the input string.
-   - If the character is a space (`Character.isSpaceChar(c)`), set `nextTitleCase` to `true` to indicate that the next non-space character should be converted to uppercase.
-   - If the character is not a space and `nextTitleCase` is `true`, convert the character to title case using `Character.toTitleCase(c)` and append it to the `StringBuilder`. Then, set `nextTitleCase` to `false`.
-
-4. **Return the result**: Convert the `StringBuilder` back to a string and return it.
-
-This method handles most common scenarios for converting strings to title case. You can further enhance it based on specific requirements or edge cases you need to handle.
+This method, `toTitleCase`, takes a string as input and converts it to title case. It iterates through each character of the string, checking if it is a space. If a space is found, it sets a flag to true, indicating that the next non-space character should be converted to uppercase. The method uses a `StringBuilder` to efficiently construct the resulting title-cased string.
 
 ================================================================================
 
@@ -268,28 +1097,178 @@ PROMPT #7:
 ----------------------------------------
 Write a Java method that receives a list of order IDs and stores them in an internal collection.
 
-RESPONSE #7:
+RETRIEVED CHUNKS FOR PROMPT #7:
 ----------------------------------------
-```java
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-
-public class OrderProcessor {
-
-    private Set<Long> storedOrderIds = new HashSet<>();
-
-    public void storeOrderIds(List<Long> orderIds) {
-        for (Long orderId : orderIds) {
-            storedOrderIds.add(orderId);
-        }
-    }
-
-    public boolean containsOrderId(Long orderId) {
-        return storedOrderIds.contains(orderId);
+Chunk 1:
+Content: @GetMapping("/{id}")
+    public ResponseEntity<OrderDto> getOrder(@PathVariable Long id) {
+        OrderDto order = orderService.getOrderById(id);
+        return ResponseEntity.ok(order);
     }
 }
 ```
+
+---
+
+### 3.5 API Security
+
+* Secure each endpoint with custom `@Requires([list_of_roles])` annotation
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #7:
+----------------------------------------
+Based on the provided guidelines, here's a Java method that receives a list of order IDs and stores them in an internal collection:
+
+```java
+import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class OrderService {
+
+    private List<Long> orderIds = new ArrayList<>();
+
+    public void storeOrderIds(List<Long> ids) {
+        this.orderIds.addAll(ids);
+    }
+
+    // Method to retrieve stored order IDs for demonstration purposes
+    public List<Long> getOrderIds() {
+        return new ArrayList<>(orderIds);
+    }
+}
+```
+
+This method, `storeOrderIds`, takes a list of `Long` objects representing order IDs and adds them to an internal `List`. The `@Service` annotation marks this class as a service component in the Spring application context. The `getOrderIds` method is provided for demonstration purposes to show how you might retrieve the stored order IDs later if needed.
 
 ================================================================================
 
@@ -297,74 +1276,177 @@ PROMPT #8:
 ----------------------------------------
 Create a method that processes a payment by checking the amount and updating the account balance.
 
-RESPONSE #8:
+RETRIEVED CHUNKS FOR PROMPT #8:
 ----------------------------------------
-To create a method that processes a payment by checking the amount and updating the account balance, you need to follow several best practices including proper coding standards, exception handling, and logging. Below is an example of how you can implement this method while adhering to the guidelines provided:
-
-1. **Use meaningful naming conventions**.
-2. **Implement proper exception handling**.
-3. **Log appropriate messages**.
-
-Here's a sample implementation:
+Chunk 1:
+Content: **Example:**
 
 ```java
-package com.company.project.service;
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+---
 
-import java.math.BigDecimal;
+## 3. Spring Boot Best Practices
 
-@Service
-public class PaymentService {
+### 3.1 Project Structure
 
-    @Autowired
-    private AccountRepository accountRepository;
+Organize backend code into:
 
-    /**
-     * Processes a payment by checking the amount and updating the account balance.
-     *
-     * @param accountId The ID of the account to process the payment for.
-     * @param amount  The amount to be debited from the account.
-     * @throws InsufficientBalanceException If the account does not have enough balance.
-     */
-    public void processPayment(Long accountId, BigDecimal amount) throws InsufficientBalanceException {
-        // Retrieve the account from the repository
-        Account account = accountRepository.findById(accountId)
-                .orElseThrow(() -> new IllegalArgumentException("Account not found"));
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
 
-        // Check if the account has sufficient balance
-        if (account.getBalance().compareTo(amount) < 0) {
-            throw new InsufficientBalanceException("Insufficient balance in account: " + accountId);
+--------------------
+Chunk 2:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
         }
-
-        // Deduct the amount from the account balance
-        account.setBalance(account.getBalance().subtract(amount));
-
-        // Save the updated account back to the repository
-        accountRepository.save(account);
-
-        // Log the payment processing success
-        log.info("Payment processed for account ID: {} with amount: {}", accountId, amount);
     }
 }
 ```
 
-### Explanation:
-1. **Service Class**: The `PaymentService` class is annotated with `@Service`, indicating it's a Spring-managed component.
-2. **Dependency Injection**: The `AccountRepository` is injected using constructor injection for better testability and maintainability.
-3. **Business Logic**:
-   - The method `processPayment` takes an account ID and payment amount as parameters.
-   - It retrieves the account from the repository, checks if there's sufficient balance, deducts the amount, updates the account balance, and saves it back to the repository.
-4. **Exception Handling**: If the account is not found or the balance is insufficient, custom exceptions (`IllegalArgumentException` and `InsufficientBalanceException`) are thrown with appropriate messages.
-5. **Logging**: Appropriate log messages are used to track the successful processing of payments.
+---
 
-### Additional Notes:
-- Ensure that the `AccountRepository` interface exists and properly extends Spring Data JPA's repository interfaces.
-- Implement the custom exceptions (`IllegalArgumentException` and `InsufficientBalanceException`) as needed.
-- Consider adding unit tests using JUnit 5 and Mockito to ensure the method behaves as expected under different scenarios.
+### 2.3 Exception Handling
 
-This implementation follows the guidelines provided, ensuring that the code is clean, maintainable, and adheres to best practices.
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Example:**
+
+```java
+/**
+ * Calculates the total price including discounts and taxes.
+ *
+ * @param items list of items
+ * @return final price
+ */
+public BigDecimal calculateTotal(List<Item> items) {
+    // ...
+}
+```
+
+---
+
+## 5. Conclusion
+
+These coding guidelines are designed to promote high-quality, maintainable code in Java and Spring Boot projects. All developers are expected to follow these standards. Regular audits and code reviews will ensure adherence.
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #8:
+----------------------------------------
+```java
+package com.company.project.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class PaymentService {
+
+    private static final Logger log = LoggerFactory.getLogger(PaymentService.class);
+    private AccountRepository accountRepository;
+
+    public void processPayment(Long accountId, BigDecimal amount) throws PaymentException {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Invalid payment amount");
+        }
+
+        try {
+            Account account = accountRepository.findById(accountId).orElseThrow(() -> new PaymentException("Account not found"));
+
+            if (account.getBalance().compareTo(amount) < 0) {
+                throw new PaymentException("Insufficient funds");
+            }
+
+            account.setBalance(account.getBalance().subtract(amount));
+            accountRepository.save(account);
+        } catch (PaymentException e) {
+            log.error("Failed to process payment for account ID: {}", accountId, e);
+            throw new PaymentException("Payment processing failed", e);
+        }
+    }
+}
+```
+
+This method processes a payment by checking the amount and updating the account balance. It uses a `PaymentService` class with methods to handle payment logic, ensuring that the payment amount is valid, the account exists, and there are sufficient funds in the account. The method logs errors and throws custom exceptions as required.
 
 ================================================================================
 
@@ -372,40 +1454,224 @@ PROMPT #9:
 ----------------------------------------
 Implement a method that submits user data to an API and handles errors using a custom exception.
 
-RESPONSE #9:
+RETRIEVED CHUNKS FOR PROMPT #9:
 ----------------------------------------
-```java
-package com.company.project.service;
+Chunk 1:
+Content: import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import com.company.project.dto.UserDataDTO;
-import com.company.project.exception.UserDataSubmissionException;
+public class CustomerService {
 
-@Service
-public class UserDataService {
-
-    private static final Logger log = LoggerFactory.getLogger(UserDataService.class);
-    @Autowired
-    private UserDataClient userDataClient;
-
-    public void submitUserData(UserDataDTO userData) {
-        try {
-            ResponseEntity<String> response = userDataClient.submit(userData);
-            if (!response.getStatusCode().is2xxSuccessful()) {
-                throw new UserDataSubmissionException("Failed to submit user data: " + response.getBody());
-            }
-        } catch (Exception e) {
-            log.error("Error submitting user data", e);
-            throw new UserDataSubmissionException("An error occurred while submitting user data", e);
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
         }
     }
 }
 ```
-This Java method `submitUserData` uses a custom exception `UserDataSubmissionException` to handle errors during the submission of user data to an API. It logs detailed error information and rethrows it with context for further handling.
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #9:
+----------------------------------------
+To implement a method that submits user data to an API and handles errors using a custom exception, follow these steps:
+
+1. **Create a Custom Exception**: Define a custom exception class that extends `RuntimeException` or `Exception`. This will help in identifying and handling specific types of errors related to the API submission.
+
+2. **Implement Error Handling**: Use try-catch blocks to handle exceptions when submitting user data. Log the error with context using a logging framework like SLF4J.
+
+3. **Throw Custom Exception**: When an error occurs, throw your custom exception with an appropriate message and original exception as the cause.
+
+Here's an example implementation:
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class UserService {
+
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
+    public void submitUserData(String userData) {
+        try {
+            // Code to submit user data to the API
+            // For demonstration, let's assume an external service call
+            ExternalApiClient.submitData(userData);
+        } catch (ApiException e) {
+            // Log the error with context
+            log.error("Failed to submit user data: {}", userData, e);
+            // Throw custom exception with appropriate message and cause
+            throw new UserSubmissionException("Error submitting user data", e);
+        }
+    }
+}
+
+class ExternalApiClient {
+    public static void submitData(String userData) throws ApiException {
+        // Simulate API call
+        if (userData == null || userData.isEmpty()) {
+            throw new ApiException("Invalid user data");
+        }
+        // Simulate successful submission
+    }
+}
+
+class UserSubmissionException extends RuntimeException {
+    public UserSubmissionException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+
+class ApiException extends Exception {
+    public ApiException(String message) {
+        super(message);
+    }
+}
+```
+
+### Explanation:
+
+1. **Custom Exceptions**:
+   - `UserSubmissionException` is a custom exception that wraps the original `ApiException`.
+   - `ApiException` is a generic exception for API-related errors.
+
+2. **Logging**:
+   - The `log.error` method logs the error with the context of the user data and the original exception.
+
+3. **Error Handling**:
+   - A try-catch block around the API submission code catches any `ApiException`.
+   - If an `ApiException` is caught, it logs the error and throws a `UserSubmissionException`.
+
+This approach ensures that errors are handled gracefully and that specific types of exceptions can be caught and dealt with appropriately in your application.
 
 ================================================================================
 
@@ -413,53 +1679,140 @@ PROMPT #10:
 ----------------------------------------
 Write a method that logs a user in using a username and password.
 
-RESPONSE #10:
+RETRIEVED CHUNKS FOR PROMPT #10:
 ----------------------------------------
-To log a user in using a username and password, you can create a method within a service class that handles the authentication process. You should use SLF4J for logging with parameterized logs to ensure security and readability. Below is an example of how you might implement such a method:
+Chunk 1:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
 
 ```java
 @Slf4j
-@Service
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class OrderService {
 
-    @Autowired
-    private UserRepository userRepository;
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
 
-    @Override
-    public void loginUser(String username, String password) {
-        try {
-            User user = userRepository.findByUsername(username);
-            if (user != null && user.getPassword().equals(password)) {
-                log.info("User {} successfully logged in", username);
-                // Proceed with login logic (e.g., setting session)
-            } else {
-                log.warn("Failed to authenticate user {}", username);
-                throw new AuthenticationException("Invalid username or password");
-            }
-        } catch (AuthenticationException e) {
-            log.error("Error during authentication for user: {}", username, e);
-            throw e;
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
         }
     }
 }
 ```
 
-### Explanation:
-1. **Logging Levels**: 
-   - `info`: Logs successful login attempts.
-   - `warn`: Logs failed login attempts (e.g., invalid credentials).
-   - `error`: Logs any errors that occur during the authentication process.
+---
 
-2. **Parameterized Logging**:
-   - The logs use parameterized messages (`"User {} successfully logged in"`), which helps prevent log injection attacks by ensuring that user input is treated as plain text.
+### 2.3 Exception Handling
 
-3. **Exception Handling**:
-   - The method catches `AuthenticationException` and logs it with an error level, providing context about the error.
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
 
-4. **Service Layer**:
-   - The method is placed within a service class (`AuthenticationServiceImpl`) to separate business logic from other layers of the application (e.g., controller).
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
 
-This example demonstrates how to implement user login with logging according to the provided guidelines.
+--------------------
+Chunk 4:
+Content: ---
+
+## 4. Additional Guidelines
+
+### 4.1 Code Reviews
+
+* Every merge request must be reviewed by at least one team member
+* Ensure code adheres to these guidelines before approval
+
+---
+
+### 4.2 Documentation
+
+* Use **JavaDoc** for APIs and public methods (except repositories)
+* Comment **why**, not what
+* Document significant decisions in `README.md` under **Architectural Decision Record (ADR)**
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: @PostMapping("/")
+    @Requires(["ITW_ORDER_CREATE", "ITW_ORDER_USER"])
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDTO order) {
+        orderService.create(order);
+        return ResponseEntity.ok(order);
+    }
+}
+```
+
+---
+
+### 3.6 Logging
+
+* Use **SLF4J** with `@Slf4j`
+* Do **not** log sensitive data
+* Use parameterized logs
+* **Logging levels**:
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #10:
+----------------------------------------
+```java
+@Slf4j
+public class UserService {
+    
+    public void loginUser(String username, String password) {
+        log.info("User {} attempted to login with password {}", username, password);
+        // Authentication logic here
+    }
+}
+```
+
+In this solution:
+- The method `loginUser` is defined in the `UserService` class.
+- It takes a `username` and `password` as parameters.
+- The logging level used is `info`, which indicates that this is a major success/event, suitable for recording user login attempts.
+- Parameterized logs are used to ensure that sensitive data like passwords are not logged.
 
 ================================================================================
 
@@ -467,94 +1820,179 @@ PROMPT #11:
 ----------------------------------------
 Create a method that checks if a user is eligible for a discount based on their age and purchase history.
 
-RESPONSE #11:
+RETRIEVED CHUNKS FOR PROMPT #11:
 ----------------------------------------
-To create a method that checks if a user is eligible for a discount based on their age and purchase history, you can follow the guidelines provided in the document pieces. Here's an example implementation:
+Chunk 1:
+Content: **Example:**
 
 ```java
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserService {
-
-    private static final int ELIGIBLE_AGE = 50; // Minimum age to be eligible for discount
-
-    public boolean isUserEligibleForDiscount(Long userId) {
-        // Logic to retrieve user details and purchase history
-        User userDetails = getUserDetails(userId);
-        List<Purchase> purchaseHistory = getPurchaseHistory(userId);
-
-        // Check if the user's age is greater than or equal to ELIGIBLE_AGE
-        if (userDetails.getAge() >= ELIGIBLE_AGE) {
-            return true;
-        }
-
-        // Additional logic can be added here based on other criteria like purchase history
-        // For example, check if the user has made more than 5 purchases in the last year
-
-        return false;
-    }
-
-    private User getUserDetails(Long userId) {
-        // Implementation to fetch user details from a repository or data source
-        return new User(userId, "John Doe", 55); // Example user for demonstration
-    }
-
-    private List<Purchase> getPurchaseHistory(Long userId) {
-        // Implementation to fetch purchase history from a repository or data source
-        return List.of(new Purchase(1L, LocalDate.now().minusYears(1)), new Purchase(2L, LocalDate.now())); // Example purchases for demonstration
-    }
+/**
+ * Calculates the total price including discounts and taxes.
+ *
+ * @param items list of items
+ * @return final price
+ */
+public BigDecimal calculateTotal(List<Item> items) {
+    // ...
 }
+```
 
-class User {
-    private Long id;
-    private String name;
-    private int age;
+---
 
-    public User(Long id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
+## 5. Conclusion
 
-    public Long getId() {
-        return id;
-    }
+These coding guidelines are designed to promote high-quality, maintainable code in Java and Spring Boot projects. All developers are expected to follow these standards. Regular audits and code reviews will ensure adherence.
+Metadata: {'source': 'Guidelines-std_complex.txt'}
 
-    public String getName() {
-        return name;
-    }
+--------------------
+Chunk 2:
+Content: ```yaml
+order:
+  max-items: 10
+```
 
-    public int getAge() {
-        return age;
-    }
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
 }
+```
 
-class Purchase {
-    private Long id;
-    private LocalDate purchaseDate;
+---
 
-    public Purchase(Long id, LocalDate purchaseDate) {
-        this.id = id;
-        this.purchaseDate = purchaseDate;
-    }
+### 3.4 REST API Design
 
-    public Long getId() {
-        return id;
-    }
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
 
-    public LocalDate getPurchaseDate() {
-        return purchaseDate;
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: @GetMapping("/{id}")
+    public ResponseEntity<OrderDto> getOrder(@PathVariable Long id) {
+        OrderDto order = orderService.getOrderById(id);
+        return ResponseEntity.ok(order);
     }
 }
 ```
 
-In this example:
-- The `UserService` class contains the method `isUserEligibleForDiscount`, which checks if a user is eligible for a discount based on their age and purchase history.
-- The `getUserDetails` and `getPurchaseHistory` methods are placeholders for fetching user details and purchase history from a data source, such as a database or an external service.
-- Additional logic can be added to the method based on other criteria like purchase history.
+---
 
-This implementation follows the guidelines provided in the document pieces, including proper naming conventions, code formatting, and best practices for dependency injection.
+### 3.5 API Security
+
+* Secure each endpoint with custom `@Requires([list_of_roles])` annotation
+
+**Example:**
+
+```java
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #11:
+----------------------------------------
+```java
+public class DiscountService {
+
+    private final UserRepository userRepository;
+
+    @Autowired
+    public DiscountService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    /**
+     * Determines if a user is eligible for a discount.
+     *
+     * @param userId the ID of the user
+     * @return true if the user is eligible for a discount, false otherwise
+     */
+    public boolean isUserEligibleForDiscount(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        // Check if the user is older than 65 years and has made more than 10 purchases
+        return user.getAge() > 65 && user.getPurchaseHistory().size() > 10;
+    }
+}
+```
+
+**Explanation:**
+- The `DiscountService` class contains a method `isUserEligibleForDiscount` which checks if a user is eligible for a discount based on their age and purchase history.
+- It uses a `UserRepository` to retrieve the user by their ID. If the user does not exist, it throws a `UserNotFoundException`.
+- The eligibility criteria are that the user must be older than 65 years and have made more than 10 purchases.
+- This method encapsulates the logic for determining discount eligibility, making it reusable throughout the application.
 
 ================================================================================
 
@@ -562,24 +2000,169 @@ PROMPT #12:
 ----------------------------------------
 Create a Java class that handles user authentication. It should store username and password and expose a method to authenticate users.
 
-RESPONSE #12:
+RETRIEVED CHUNKS FOR PROMPT #12:
 ----------------------------------------
-```java
-import org.springframework.stereotype.Component;
+Chunk 1:
+Content: import java.util.List;
 
-@Component
-public class AuthService {
+public class CustomerService {
 
-    private String storedUsername = "admin";
-    private String storedPassword = "password123";
-
-    public boolean authenticate(String username, String password) {
-        return storedUsername.equals(username) && storedPassword.equals(password);
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
     }
 }
 ```
 
-This Java class `AuthService` is a simple example of how you might handle user authentication in a Spring Boot application. It stores a hardcoded username and password for demonstration purposes and provides a method to authenticate users by comparing the provided credentials against these stored values.
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #12:
+----------------------------------------
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class AuthenticationService {
+
+    private Map<String, String> userCredentials = new HashMap<>();
+
+    public void addUser(String username, String password) {
+        if (username != null && password != null) {
+            userCredentials.put(username, password);
+        }
+    }
+
+    public boolean authenticate(String username, String password) {
+        if (username == null || password == null) {
+            return false;
+        }
+        String storedPassword = userCredentials.get(username);
+        return storedPassword != null && storedPassword.equals(password);
+    }
+}
+```
 
 ================================================================================
 
@@ -587,43 +2170,194 @@ PROMPT #13:
 ----------------------------------------
 Write a class that manages an order list, with methods to add, remove, and list orders.
 
-RESPONSE #13:
+RETRIEVED CHUNKS FOR PROMPT #13:
 ----------------------------------------
-```java
-import java.util.ArrayList;
-import java.util.List;
+Chunk 1:
+Content: **Good:**
 
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+
+```java
+@ConfigurationProperties(prefix = "order")
+@Component
+@Getter
+@Setter
+public class OrderConfig {
+    private int maxItems;
+}
+```
+
+---
+
+### 3.4 REST API Design
+
+* Use meaningful and consistent URI patterns
+* Use appropriate HTTP verbs (GET, POST, PUT, DELETE)
+* Return standardized response bodies (status, message, data)
+
+**Example:**
+
+```java
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
 
-    private List<Order> orderList = new ArrayList<>();
+--------------------
+Chunk 3:
+Content: ---
 
-    @PostMapping("/")
-    @Requires(["ITW_ORDER_CREATE", "ITW_ORDER_USER"])
-    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDTO order) {
-        Order createdOrder = new Order(order.getId(), order.getItems());
-        orderList.add(createdOrder);
-        return ResponseEntity.ok(new OrderDto(createdOrder));
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #13:
+----------------------------------------
+Based on the guidelines provided, here's a class `OrderManager` that manages an order list with methods to add, remove, and list orders:
+
+```java
+package com.company.project.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class OrderService {
+    private final List<Order> orderList = new ArrayList<>();
+
+    public void addOrder(Order order) {
+        orderList.add(order);
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<OrderDto>> listOrders() {
-        List<OrderDto> orderDtos = new ArrayList<>();
-        for (Order order : orderList) {
-            orderDtos.add(new OrderDto(order));
-        }
-        return ResponseEntity.ok(orderDtos);
+    public boolean removeOrder(Long orderId) {
+        return orderList.removeIf(order -> order.getId().equals(orderId));
     }
 
-    @DeleteMapping("/{id}")
-    @Requires(["ITW_ORDER_DELETE"])
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
-        orderList.removeIf(order -> order.getId().equals(id));
-        return ResponseEntity.noContent().build();
+    public List<Order> listOrders() {
+        return new ArrayList<>(orderList);
     }
 }
 ```
+
+This class uses a `List` to store the orders and provides methods to manipulate this list. The `@Service` annotation marks it as a Spring service, and `@RequiredArgsConstructor` generates a constructor with final fields and required parameters.
+
+Note: For this example, I assumed an `Order` class exists with `getId()` method. If not, you need to define that or adjust the methods accordingly.
 
 ================================================================================
 
@@ -631,50 +2365,168 @@ PROMPT #14:
 ----------------------------------------
 Define a class that represents a payment service. Include functionality for submitting and verifying a payment.
 
+RETRIEVED CHUNKS FOR PROMPT #14:
+----------------------------------------
+Chunk 1:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #14:
 ----------------------------------------
 ```java
 package com.company.project.service;
 
-import com.company.project.model.Payment;
-import com.company.project.exception.PaymentException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PaymentService {
 
-    private static final Logger log = LoggerFactory.getLogger(PaymentService.class);
-
-    public void submitPayment(Payment payment) {
-        if (payment == null || payment.getAmount() <= 0) {
-            throw new IllegalArgumentException("Invalid payment details");
-        }
-
-        try {
-            // Simulate payment processing
-            processPayment(payment);
-            log.info("Payment submitted successfully for amount: {}", payment.getAmount());
-        } catch (Exception e) {
-            log.error("Failed to submit payment", e);
-            throw new PaymentException("Payment submission failed", e);
+    public void submitPayment(PaymentDetails paymentDetails) throws PaymentException {
+        // Logic to submit payment details to the payment gateway
+        if (!paymentGateway.isPaymentSuccessful(paymentDetails)) {
+            throw new PaymentException("Payment submission failed");
         }
     }
 
-    public boolean verifyPayment(Payment payment) {
-        // Simulate payment verification
-        return Math.random() > 0.5; // Assuming a successful verification for simplicity
-    }
-
-    private void processPayment(Payment payment) {
-        // Actual payment processing logic here (e.g., calling external payment gateway)
-        Thread.sleep(1000); // Simulating a network delay
+    public boolean verifyPayment(String paymentId) throws PaymentVerificationException {
+        // Logic to verify payment status using payment gateway
+        return paymentGateway.verifyPaymentStatus(paymentId);
     }
 }
 ```
-
-This class `PaymentService` includes methods to submit and verify payments. The `submitPayment` method checks if the payment is valid, processes it, and logs the result. The `verifyPayment` method simulates a verification process, which can be replaced with actual logic to check payment status with a payment gateway.
+In this class, `submitPayment` is responsible for submitting the payment details to a payment gateway. If the payment is not successful, it throws a custom exception `PaymentException`. The `verifyPayment` method checks the status of a payment using its ID and returns true if the payment is verified, otherwise throws `PaymentVerificationException`.
 
 ================================================================================
 
@@ -682,40 +2534,230 @@ PROMPT #15:
 ----------------------------------------
 Implement a class that tracks login attempts for users and can lock an account after three failed logins.
 
+RETRIEVED CHUNKS FOR PROMPT #15:
+----------------------------------------
+Chunk 1:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #15:
 ----------------------------------------
-To implement a class that tracks login attempts for users and locks an account after three failed logins, you can use the following code:
+To implement a class that tracks login attempts for users and locks an account after three failed logins, you can follow these guidelines:
+
+1. **Organize the code into appropriate packages**:
+   - Use `api` for any REST endpoints or DTOs.
+   - Use `app` for business logic, such as Service and Facade classes.
+   - Use `data` for database entities and repositories.
+
+2. **Implement a service class to handle login attempts**:
+   - This class will track the number of failed login attempts for each user.
+   - It will lock an account after three consecutive failed attempts.
+
+Here is a sample implementation:
+
 ```java
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package app.security;
+
+import data.UserRepository;
+import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoginAttemptService {
-    private static final Logger log = LoggerFactory.getLogger(LoginAttemptService.class);
 
-    private Map<String, Integer> loginAttempts = new HashMap<>();
+    @Autowired
+    private UserRepository userRepository;
 
-    public boolean isAccountLocked(String username) {
-        int attempts = loginAttempts.getOrDefault(username, 0);
-        return attempts >= 3;
+    private Map<String, Integer> failedLoginAttempts = new HashMap<>();
+
+    public void loginFailed(String username) {
+        updateFailedAttempts(username);
+        if (getFailedAttempts(username) >= 3) {
+            lockAccount(username);
+        }
     }
 
-    public void recordLoginSuccess(String username) {
-        loginAttempts.remove(username);
+    private void updateFailedAttempts(String username) {
+        failedLoginAttempts.put(username, failedLoginAttempts.getOrDefault(username, 0) + 1);
     }
 
-    public void recordLoginFailure(String username) {
-        log.info("Login failed for user {}", username);
-        loginAttempts.put(username, loginAttempts.getOrDefault(username, 0) + 1);
+    private int getFailedAttempts(String username) {
+        return failedLoginAttempts.getOrDefault(username, 0);
+    }
+
+    private void lockAccount(String username) {
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setLocked(true);
+            userRepository.save(user);
+            log.warn("User {} account locked due to multiple failed login attempts.", username);
+        }
+    }
+
+    public void resetFailedAttempts(String username) {
+        failedLoginAttempts.remove(username);
     }
 }
 ```
-This class uses a `HashMap` to keep track of the number of login attempts for each user. The `isAccountLocked` method checks if the account is locked by looking up the number of attempts in the map. If the count is greater than or equal to three, the account is considered locked.
-The `recordLoginSuccess` and `recordLoginFailure` methods are used to update the attempt count when a user logs in successfully or fails to log in, respectively. The `recordLoginFailure` method also logs an info message for each failed login attempt using SLF4J with parameterized logs as specified in the guidelines.
+
+### Explanation:
+
+1. **Dependencies**:
+   - The `LoginAttemptService` class is annotated with `@Service`, indicating it's a Spring service.
+   - It uses a `UserRepository` to interact with the database.
+
+2. **Failed Login Attempts Tracking**:
+   - A `Map<String, Integer>` named `failedLoginAttempts` is used to keep track of failed login attempts for each user.
+   - The `loginFailed` method updates this map whenever a login attempt fails and checks if the number of failed attempts reaches three.
+
+3. **Account Locking**:
+   - If the number of failed attempts reaches three, the `lockAccount` method is called to lock the user's account by updating the `locked` field in the database.
+   - The `resetFailedAttempts` method can be used to reset the count when a successful login occurs.
+
+### Usage:
+
+To use this service, you would typically call the `loginFailed` method whenever a failed login attempt is detected, and optionally call `resetFailedAttempts` when a successful login occurs.
+
+This implementation follows the best practices for organizing code into packages, using services for business logic, and handling exceptions appropriately.
 
 ================================================================================
 
@@ -723,119 +2765,187 @@ PROMPT #16:
 ----------------------------------------
 Create a Java class that validates input fields for a form, including email and phone number checks.
 
-RESPONSE #16:
+RETRIEVED CHUNKS FOR PROMPT #16:
 ----------------------------------------
-Certainly! Below is a Java class that includes methods to validate various input fields such as email and phone numbers. This example follows the provided guidelines, including naming conventions, code formatting, and exception handling.
+Chunk 1:
+Content: import java.util.List;
 
-```java
-package com.company.project.validation;
+public class CustomerService {
 
-import org.springframework.stereotype.Component;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-@Component
-public class FormValidator {
-
-    // Regular expression for validating an Email
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-
-    // Regular expression for validating a Phone Number (US format)
-    private static final String PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$";
-
-    /**
-     * Validates an email address.
-     *
-     * @param email the email address to validate
-     * @return true if the email is valid, false otherwise
-     */
-    public boolean isValidEmail(String email) {
-        Pattern pattern = Pattern.compile(EMAIL_REGEX);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    /**
-     * Validates a phone number in US format (e.g., 123-456-7890).
-     *
-     * @param phoneNumber the phone number to validate
-     * @return true if the phone number is valid, false otherwise
-     */
-    public boolean isValidPhoneNumber(String phoneNumber) {
-        Pattern pattern = Pattern.compile(PHONE_REGEX);
-        Matcher matcher = pattern.matcher(phoneNumber);
-        return matcher.matches();
-    }
-
-    /**
-     * Validates an input string based on a regular expression.
-     *
-     * @param input the input to validate
-     * @param regex the regular expression pattern
-     * @return true if the input matches the pattern, false otherwise
-     */
-    public boolean isValidInput(String input, String regex) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
-        return matcher.matches();
-    }
-
-    /**
-     * Validates a form by checking email and phone number.
-     *
-     * @param form the form data to validate
-     * @return true if the form is valid, false otherwise
-     */
-    public boolean isValidForm(FormData form) {
-        try {
-            if (!isValidEmail(form.getEmail())) {
-                throw new IllegalArgumentException("Invalid email address");
-            }
-            if (!isValidPhoneNumber(form.getPhoneNumber())) {
-                throw new IllegalArgumentException("Invalid phone number");
-            }
-            return true;
-        } catch (IllegalArgumentException e) {
-            log.error("Form validation failed: {}", e.getMessage());
-            throw e;
-        }
-    }
-
-    // Example DTO for form data
-    public static class FormData {
-        private String email;
-        private String phoneNumber;
-
-        // Getters and Setters
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
         }
     }
 }
 ```
 
-### Explanation:
-1. **Package and Import Statements**: The class is located in the `com.company.project.validation` package and imports necessary classes.
-2. **Class Declaration**: The class is annotated with `@Component`, making it a Spring-managed bean.
-3. **Regular Expressions**: Constants for email and phone number validation are defined using regular expressions.
-4. **Validation Methods**: Methods to validate email, phone number, and generic input based on a regex pattern are provided.
-5. **Form Validation Method**: A method to validate the entire form, checking email and phone number validity.
-6. **FormData DTO**: An inner static class representing form data with getters and setters.
+---
 
-This example ensures that the code follows the provided guidelines for naming conventions, code formatting, and exception handling.
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: **Example package layout:**
+
+```
+com.company.project
+â”œâ”€â”€ api
+â”‚   â””â”€â”€ OrderResource.java
+â”œâ”€â”€ app
+â”‚   â”œâ”€â”€ OrderService.java
+â”‚   â””â”€â”€ ExternalClient.java
+â””â”€â”€ data
+    â”œâ”€â”€ Order.java
+    â””â”€â”€ OrderRepository.java
+```
+
+---
+
+### 3.2 Dependency Injection
+
+* **Use constructor injection**
+* **Avoid field injection**
+
+**Bad:**
+
+```java
+@Autowired
+private OrderService orderService;
+```
+
+**Good:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+RESPONSE #16:
+----------------------------------------
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class FormValidator {
+
+    // Regular expression for validating an Email
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    // Regular expression for validating a Phone Number
+    private static final String PHONE_REGEX = "^\\(\\d{3}\\) \\d{3}-\\d{4}$";
+
+    // Method to validate email
+    public boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Method to validate phone number
+    public boolean isValidPhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile(PHONE_REGEX);
+        if (phoneNumber == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
+    }
+}
+```
 
 ================================================================================
 
@@ -843,15 +2953,160 @@ PROMPT #17:
 ----------------------------------------
 Create a utility class with a method that trims whitespace from a list of strings.
 
+RETRIEVED CHUNKS FOR PROMPT #17:
+----------------------------------------
+Chunk 1:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #17:
 ----------------------------------------
+Certainly! Below is a utility class named `StringUtils` that includes a method to trim whitespace from a list of strings. This class follows the guidelines provided for code formatting, naming conventions, and general Java coding standards.
+
 ```java
 package com.company.project.util;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StringListUtil {
+public final class StringUtils {
+
+    // Private constructor to prevent instantiation
+    private StringUtils() {
+        throw new UnsupportedOperationException("Utility class should not be instantiated");
+    }
 
     /**
      * Trims whitespace from each string in the provided list.
@@ -860,12 +3115,23 @@ public class StringListUtil {
      * @return A new list containing the trimmed strings.
      */
     public static List<String> trimStrings(List<String> stringList) {
+        if (stringList == null || stringList.isEmpty()) {
+            return List.of();
+        }
         return stringList.stream()
-                         .map(String::trim)
-                         .collect(Collectors.toList());
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 }
 ```
+
+### Explanation:
+1. **Package Declaration**: The package declaration is at the top of the file.
+2. **Imports**: The necessary imports are included at the beginning.
+3. **Class Declaration**: The class `StringUtils` is declared as `final` to prevent instantiation and contains a private constructor.
+4. **Method**: The method `trimStrings` takes a list of strings and returns a new list with each string trimmed. It uses Java Streams for concise and readable code.
+
+This utility class follows the guidelines provided, ensuring that it is properly formatted and adheres to common naming conventions in Java.
 
 ================================================================================
 
@@ -873,6 +3139,138 @@ PROMPT #18:
 ----------------------------------------
 Write a method that throws an exception when the input amount is negative.
 
+RETRIEVED CHUNKS FOR PROMPT #18:
+----------------------------------------
+Chunk 1:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #18:
 ----------------------------------------
 ```java
@@ -883,28 +3281,191 @@ public void validateAmount(double amount) {
 }
 ```
 
-**Explanation**: This method, `validateAmount`, takes a double as an argument and checks if it is negative. If the amount is negative, it throws an `IllegalArgumentException` with a message indicating that the amount cannot be negative. This follows the guideline of never swallowing exceptions and always logging or throwing them appropriately.
-
 ================================================================================
 
 PROMPT #19:
 ----------------------------------------
 Create a class that defines and uses a custom exception for failed login attempts.
 
+RETRIEVED CHUNKS FOR PROMPT #19:
+----------------------------------------
+Chunk 1:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: ---
+
+### 3.7 Unit and Integration Testing
+
+* Use **JUnit 5** and **Mockito** for unit tests
+* Use `@SpringBootTest` for integration tests
+* Name test methods clearly to reflect behavior
+
+**Example:**
+
+```java
+@Test
+void shouldReturnOrderWhenValidIdGiven() {
+    when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+    Order result = orderService.getOrderById(1L);
+
+    assertNotNull(result);
+}
+```
+
+---
+
+### 3.8 ORM and Data Manipulation
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: ---
+
+## 2. General Java Coding Standards
+
+### 2.1 Naming Conventions
+- **Classes**: Use PascalCase (e.g., `CustomerService`)
+- **Methods**: Use camelCase (e.g., `calculateTotal`)
+- **Variables**: Use camelCase (e.g., `userName`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `MAX_RETRIES`)
+- **Packages**: Use all lowercase (e.g., `com.company.project.service`)
+
+**Example:**
+```java
+public class OrderProcessor {
+
+    private static final int MAX_RETRIES = 3;
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #19:
 ----------------------------------------
-```java
-package com.company.project.exception;
+To create a class that defines and uses a custom exception for failed login attempts, you should follow the guidelines provided in the document, particularly focusing on exception handling and naming conventions.
 
-// Custom exception class for failed login attempts
-public class LoginFailedException extends Exception {
-    public LoginFailedException(String message) {
+Here's how you can implement this:
+
+1. **Create the Custom Exception Class**: Define a new class that extends `Exception` or any of its subclasses (like `RuntimeException`) to handle specific scenarios, such as failed login attempts.
+2. **Use the Custom Exception in Your Code**: Throw this custom exception when a login attempt fails and catch it where appropriate.
+
+Below is an example following these guidelines:
+
+```java
+import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+
+    // Method to simulate a login check
+    public boolean login(String username, String password) throws FailedLoginException {
+        // Assume we have a method to verify credentials
+        if (!verifyCredentials(username, password)) {
+            throw new FailedLoginException("Invalid username or password");
+        }
+        return true;
+    }
+
+    private boolean verifyCredentials(String username, String password) {
+        // Logic to check if the credentials are correct
+        // For example:
+        return "admin".equals(username) && "password".equals(password);
+    }
+}
+
+// Custom Exception for failed login attempts
+class FailedLoginException extends Exception {
+    public FailedLoginException(String message) {
         super(message);
     }
 }
 ```
 
-In this example, we create a custom exception called `LoginFailedException`. This exception is used to handle cases where a user's login attempt fails. The constructor takes a string message which describes the reason for the failure. This allows for clear and descriptive error handling in scenarios related to login processes within an application.
+### Explanation:
+1. **Custom Exception Class (`FailedLoginException`)**: This class extends `Exception` and is used to handle specific cases where a login attempt fails.
+2. **Login Method**: The `login` method in the `CustomerService` class checks if the provided credentials are valid. If not, it throws a `FailedLoginException`.
+3. **Logging Exceptions**: While not explicitly shown, you should log this exception with context as per the guidelines to ensure better error tracking and debugging.
+
+This implementation follows the best practices for handling exceptions in Java and adheres to the naming conventions specified in the document.
 
 ================================================================================
 
@@ -912,37 +3473,241 @@ PROMPT #20:
 ----------------------------------------
 Implement a method that processes a file upload and throws an exception if the file size is too large.
 
+RETRIEVED CHUNKS FOR PROMPT #20:
+----------------------------------------
+Chunk 1:
+Content: private static final int MAX_RETRIES = 3;
+
+    public void processOrder(String orderId) {
+        // ...
+    }
+}
+````
+
+---
+
+### 2.2 Code Formatting
+
+* **Indentation**: 4 spaces, no tabs
+* **Line length**: Max 120 characters
+* **Braces**: Always use braces, even for single-line blocks
+* **File structure**:
+
+  1. Package declaration
+  2. Imports (sorted and grouped)
+  3. Class declaration
+
+**Example:**
+
+```java
+package com.company.project.service;
+
+import java.util.List;
+
+public class CustomerService {
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 2:
+Content: import java.util.List;
+
+public class CustomerService {
+
+    public void addCustomer(Customer customer) {
+        if (customer != null) {
+            customers.add(customer);
+        }
+    }
+}
+```
+
+---
+
+### 2.3 Exception Handling
+
+* Never swallow exceptions
+* Use custom exceptions where appropriate
+* Always log the exception with context
+
+**Example:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 3:
+Content: **Example:**
+
+```java
+try {
+    orderService.placeOrder(order);
+} catch (PaymentException e) {
+    log.error("Payment failed for order ID: {}", order.getId(), e);
+    throw new OrderProcessingException("Payment failed", e);
+}
+```
+
+---
+
+## 3. Spring Boot Best Practices
+
+### 3.1 Project Structure
+
+Organize backend code into:
+
+* `api`: REST endpoints and DTOs, named as `Resource`
+* `app`: Business logic (Translator, Service, Facade, Clients)
+* `data`: Database entities and repositories
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 4:
+Content: **Good:**
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderController {
+
+    private final OrderService orderService;
+
+}
+```
+
+---
+
+### 3.3 Configuration Management
+
+* Prefer `application.yml` over `application.properties`
+* Externalize environment-specific configs
+* Use `@ConfigurationProperties` for structured configs
+
+**Example `application.yml`:**
+
+```yaml
+order:
+  max-items: 10
+```
+
+**Example class:**
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
+Chunk 5:
+Content: * `error`: Exceptions or errors
+  * `warn`: Unexpected but non-fatal conditions
+  * `info`: Major success/events
+  * `debug`: Developer-centric data
+  * `trace`: Local debugging
+
+**Example:**
+
+```java
+@Slf4j
+public class OrderService {
+
+    public void getOrder(String username, Long orderId) {
+        log.info("User {} requested order {}", username, orderId);
+        // ...
+    }
+}
+```
+
+---
+
+### 3.7 Unit and Integration Testing
+Metadata: {'source': 'Guidelines-std_complex.txt'}
+
+--------------------
 RESPONSE #20:
 ----------------------------------------
+Certainly! Below is an example of how you might implement a method to process a file upload with exception handling for files that are too large, following the guidelines provided.
+
+### Example Code
+
 ```java
 package com.company.project.service;
 
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class FileUploadService {
 
-    private static final long MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    private static final int MAX_FILE_SIZE = 5 * 1024 * 1024; // Maximum file size of 5MB
 
-    public void processFile(File file) throws IOException, FileSizeException {
-        if (file.length() > MAX_FILE_SIZE) {
-            throw new FileSizeException("File size exceeds the maximum allowed limit of " + MAX_FILE_SIZE + " bytes.");
+    private static final Logger logger = Logger.getLogger(FileUploadService.class.getName());
+
+    public void processFileUpload(File uploadedFile) throws IOException {
+        if (uploadedFile == null || !uploadedFile.exists()) {
+            throw new IllegalArgumentException("Uploaded file is null or does not exist");
         }
-        // Proceed with file processing
+
+        // Check the size of the file
+        if (uploadedFile.length() > MAX_FILE_SIZE) {
+            logger.log(Level.SEVERE, "File size exceeds maximum allowed limit: {0} bytes", uploadedFile.length());
+            throw new FileSizeException("File size exceeds maximum allowed limit of 5MB");
+        }
+
+        // Process the file upload logic here
+        try {
+            // Simulate file processing
+            logger.info("Processing file: " + uploadedFile.getName());
+            // Add your actual file processing code here
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error processing file: " + uploadedFile.getName(), e);
+            throw new FileProcessingException("Error processing file", e);
+        }
     }
 
-    // Custom exception for file size violations
     public static class FileSizeException extends IOException {
         public FileSizeException(String message) {
             super(message);
+        }
+
+        public FileSizeException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+
+    public static class FileProcessingException extends IOException {
+        public FileProcessingException(String message) {
+            super(message);
+        }
+
+        public FileProcessingException(String message, Throwable cause) {
+            super(message, cause);
         }
     }
 }
 ```
 
-This Java code snippet defines a service `FileUploadService` that processes file uploads. It includes a method `processFile` which checks if the uploaded file's size exceeds a predefined maximum (`MAX_FILE_SIZE`). If the file size is too large, it throws a custom exception `FileSizeException`. This ensures that the system can handle only files within acceptable limits and provides clear feedback when a violation occurs.
+### Explanation
+
+1. **Package Declaration**: 
+   - The code is organized into a package `com.company.project.service`.
+
+2. **Imports**:
+   - All necessary imports are included at the beginning of the file.
+
+3. **Class Declaration**:
+   - A service class named `FileUploadService` is declared with the `@Service` annotation for Spring component scanning.
+   
+4. **Constants and Members**:
+   - `MAX_FILE_SIZE` constant to define the maximum allowable file size (5MB).
+   - `logger` instance for logging.
+
+5. **Method Implementation**:
+   - The `processFileUpload` method takes a `File` object as input.
+   - It first checks if the file is null or does not exist, throwing an `IllegalArgumentException` if true.
+   - It then checks the file size against the maximum allowed limit (`MAX_FILE_SIZE`). If the file size exceeds this limit, it logs a severe error and throws a custom `FileSizeException`.
+   - The actual file processing logic is simulated with logging statements.
+
+6. **Custom Exceptions**:
+   - Two custom exceptions, `FileSizeException` and `FileProcessingException`, are defined to handle specific error cases related to file upload processing.
+
+This implementation follows the provided guidelines for code formatting, exception handling, and Spring Boot best practices.
 
 ================================================================================
 

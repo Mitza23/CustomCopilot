@@ -1,0 +1,67 @@
+Based on the provided `input_results.txt` file, here is an evaluation of the RAG system across the 20 prompts, assessing Faithfulness, Answer Relevancy, Contextual Precision, and Contextual Relevancy.
+
+### Evaluation Summary
+
+The following table summarizes the calculated scores for each of the 20 prompts and the average score for each metric. This RAG system was evaluated against a complex set of coding guidelines that included rules for naming conventions (e.g., `snake_case` for classes, verb-noun for methods), mandatory annotations (`@Visible`), exception handling, and structural requirements (`verifyContract_struct()` method).
+
+| Prompt ID | Contextual Relevancy | Contextual Precision | Faithfulness | Answer Relevancy |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | 0.8 | 1.00 | 0.50 | 0.50 |
+| 2 | 0.8 | 1.00 | 0.43 | 0.50 |
+| 3 | 0.8 | 0.95 | 0.33 | 0.50 |
+| 4 | 0.8 | 1.00 | 0.10 | 0.50 |
+| 5 | 0.8 | 1.00 | 0.50 | 0.75 |
+| 6 | 0.8 | 1.00 | 0.57 | 0.75 |
+| 7 | 0.8 | 1.00 | 0.40 | 1.00 |
+| 8 | 0.8 | 1.00 | 0.10 | 0.50 |
+| 9 | 1.0 | 1.00 | 0.83 | 1.00 |
+| 10 | 0.8 | 1.00 | 0.83 | 1.00 |
+| 11 | 0.8 | 1.00 | 0.50 | 0.75 |
+| 12 | 0.6 | 1.00 | 0.67 | 1.00 |
+| 13 | 0.8 | 1.00 | 0.67 | 1.00 |
+| 14 | 1.0 | 1.00 | 0.80 | 1.00 |
+| 15 | 0.8 | 1.00 | 0.83 | 1.00 |
+| 16 | 1.0 | 1.00 | 0.33 | 1.00 |
+| 17 | 0.8 | 1.00 | 0.60 | 1.00 |
+| 18 | 1.0 | 1.00 | 0.90 | 1.00 |
+| 19 | 1.0 | 1.00 | 0.67 | 1.00 |
+| 20 | 1.0 | 1.00 | 0.67 | 1.00 |
+| **Average** | **0.85** | **1.00** | **0.56** | **0.86** |
+
+---
+
+### Detailed Metric Analysis
+
+#### **Faithfulness**
+
+* **Average Score: 0.56**
+
+Faithfulness measures if the generated code factually adheres to the rules in the retrieved context. The score of 0.56 indicates that the system followed the provided coding guidelines correctly just over half the time.
+
+* **High-Scoring Prompts (e.g., #18, #9, #14):** In these cases, the system correctly implemented multiple complex rules simultaneously. [cite_start]For prompt #18, it successfully used a custom exception, correct method naming (`saveOrder_info` [cite: 446][cite_start]), and correct variable type hints (`amount_dbl` [cite: 446]), showing strong adherence.
+* **Low-Scoring Prompts (e.g., #4, #8):** These responses had severe faithfulness issues. [cite_start]In prompt #8, the response hallucinated its own compliance, stating "The class name `PaymentProcessor` follows snake_case" [cite: 183][cite_start], which is factually incorrect as `snake_case` was required[cite: 166]. [cite_start]It also used a forbidden exception type (`IllegalArgumentException` [cite: 178][cite_start]), directly contradicting the retrieved context[cite: 159].
+* **Common Failures:** The system consistently struggled with three main rules:
+    1.  [cite_start]**Class Naming:** It often failed to use the required `snake_case` for class names [cite: 28, 55, 71][cite_start], instead opting for PascalCase (e.g., `PaymentProcessor` [cite: 173][cite_start], `FormValidator` [cite: 388]).
+    2.  [cite_start]**Method Naming:** It frequently did not follow the `verb-noun` structure for method names[cite: 29, 92, 111].
+    3.  [cite_start]**Exception Handling:** It sometimes used `IllegalArgumentException` [cite: 39, 59, 80] [cite_start]even when explicitly told to use a custom exception hierarchy and avoid it[cite: 26, 50, 63].
+
+#### **Answer Relevancy**
+
+* **Average Score: 0.86**
+
+Answer Relevancy assesses if the output directly and completely addresses the user's prompt. The high score of 0.86 indicates the system is very good at generating code that performs the requested task.
+
+* **High-Scoring Prompts (e.g., #9, #15, #20):** For most prompts, the generated code provided a logical and complete solution to the problem described. [cite_start]For instance, the response for prompt #15 correctly implemented logic for tracking login attempts and locking an account[cite: 360, 364].
+* [cite_start]**Low-Scoring Prompts (e.g., #1-#4, #8):** Scores were lowered when the generated output was not syntactically valid Java (e.g., a method defined outside of any class) or when the response included significant hallucinations about its own adherence to the rules[cite: 183], making the answer less reliable and therefore less relevant.
+
+#### **Contextual Precision**
+
+* **Average Score: 1.00 (Rounded)**
+
+Contextual Precision evaluates the retriever's ability to rank the most relevant context chunks higher. The near-perfect score of 0.9975 indicates an extremely effective retriever. In almost every case, the chunks containing the most critical and specific rules (like naming conventions) were ranked at the top of the retrieved list, giving the generation model the best possible chance to succeed.
+
+#### **Contextual Relevancy**
+
+* **Average Score: 0.85**
+
+Contextual Relevancy measures what proportion of the retrieved context is useful for the prompt. A score of 0.85 means that, on average, more than 4 out of the 5 retrieved chunks contained actionable guidelines. [cite_start]The retriever successfully identified and fetched specific rules regarding naming, annotations, documentation, and structural requirements, while only occasionally including overly generic chunks (e.g., a "Conclusion" section [cite: 146, 300]). This high relevancy shows a strong retrieval system tailored to the source documents.

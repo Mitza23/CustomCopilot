@@ -1,0 +1,73 @@
+Based on the provided `input_results.txt` file, here is an evaluation of the RAG system across the 20 prompts, assessing Faithfulness, Answer Relevancy, Contextual Precision, and Contextual Relevancy.
+
+### Evaluation Summary
+
+The following table summarizes the calculated scores for each of the 20 prompts and the average score for each metric.
+
+| Prompt ID | Contextual Relevancy | Contextual Precision | Faithfulness | Answer Relevancy |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | 0.6 | 0.87 | 1.0 | 1.0 |
+| 2 | 0.8 | 0.95 | 1.0 | 1.0 |
+| 3 | 0.8 | 0.95 | 0.0 | 0.5 |
+| 4 | 0.6 | 0.64 | 0.0 | 0.5 |
+| 5 | 0.8 | 1.00 | 1.0 | 1.0 |
+| 6 | 0.6 | 0.87 | 0.5 | 0.75 |
+| 7 | 0.8 | 0.89 | 1.0 | 0.25 |
+| 8 | 0.8 | 1.00 | 0.0 | 0.5 |
+| 9 | 1.0 | 0.89 | 0.0 | 0.5 |
+| 10 | 0.6 | 0.76 | 1.0 | 1.0 |
+| 11 | 1.0 | 1.00 | 0.0 | 0.5 |
+| 12 | 0.4 | 1.00 | 1.0 | 1.0 |
+| 13 | 0.6 | 1.00 | 1.0 | 1.0 |
+| 14 | 0.6 | 0.92 | 1.0 | 1.0 |
+| 15 | 0.6 | 0.76 | 1.0 | 1.0 |
+| 16 | 0.6 | 1.00 | 1.0 | 1.0 |
+| 17 | 0.6 | 1.00 | 1.0 | 1.0 |
+| 18 | 0.6 | 0.92 | 0.0 | 0.5 |
+| 19 | 0.6 | 0.64 | 0.0 | 0.5 |
+| 20 | 0.6 | 0.81 | 1.0 | 1.0 |
+| **Average** | **0.68** | **0.89** | **0.63** | **0.83** |
+
+---
+
+### Detailed Metric Analysis
+
+#### **Faithfulness**
+
+* **Average Score: 0.63**
+
+Faithfulness measures whether the generated output is factually consistent with the retrieved context. A score of 1.0 indicates full consistency, while a score of 0.0 indicates a contradiction.
+
+* **High-Scoring Prompts (e.g., #1, #2, #5, #10):** In these cases, the generated code correctly adhered to the coding guidelines provided in the retrieved chunks, such as class and method naming conventions (`JOKE_`, `laugh_`) and the use of JavaDoc comments.
+* **Low-Scoring Prompts (e.g., #3, #4, #8, #11):** These prompts received a score of 0.0 because the generated code directly contradicted the explicit naming conventions found in the retrieved context. [cite_start]For instance, a generated class was named `AmountProcessor` instead of `JOKE_AmountProcessor`[cite: 257], violating the guideline.
+* **Partial-Scoring Prompts (e.g., #6):** This prompt's response followed the method naming rule but not the class naming rule, resulting in a partial score.
+* **Key Insight:** The system's primary failure in faithfulness was its inconsistency in applying the retrieved coding standards. In 8 out of 20 cases, it completely ignored the naming conventions it was provided.
+
+#### **Answer Relevancy**
+
+* **Average Score: 0.83**
+
+Answer Relevancy assesses how much of the generated response is pertinent to the user's prompt.
+
+* **High-Scoring Prompts (e.g., #1, #2, #20):** The responses for these prompts provided a complete and direct solution to the user's request, while also correctly incorporating the retrieved context.
+* **Low-Scoring Prompts (e.g., #7):** The response for prompt #7 was marked down significantly because it failed to meet a key requirement of the prompt. [cite_start]The request was to create a method that accepts a *list* of order IDs, but the generated method only accepted a *single* ID[cite: 95, 103].
+* **Partial-Scoring Prompts (e.g., #3, #4, #8):** For prompts where faithfulness was 0.0, the answer relevancy was capped at 0.5. While the generated code logically answered the prompt (e.g., it calculated an average), it was considered only partially relevant because it failed the implied task of adhering to the provided RAG context.
+
+#### **Contextual Precision**
+
+* **Average Score: 0.89**
+
+Contextual Precision evaluates if the most relevant documents are ranked higher in the retrieval process. A high score indicates that the retriever is effective at prioritizing useful information.
+
+* **Performance:** The score of 0.89 is high, indicating that the retriever generally does a good job of placing the most critical context (like the explicit naming convention rules) in the top-ranked positions.
+* [cite_start]**Example:** For Prompt #2, the key guidelines for naming conventions and documentation were all retrieved within the top 3 chunks, leading to a high precision score[cite: 13, 14, 15]. For Prompt #4, however, the most relevant chunk was at position 3, slightly lowering the score.
+
+#### **Contextual Relevancy**
+
+* **Average Score: 0.68**
+
+Contextual Relevancy measures the proportion of retrieved chunks that are actually relevant to the prompt.
+
+* **Performance:** The score of 0.68 suggests that for a typical prompt, about 3 to 4 of the 5 retrieved chunks were relevant.
+* [cite_start]**Irrelevant Chunks:** The retriever often included general, less-relevant chunks such as "Company Java & Spring Boot Coding Guidelines" (a title) or the "Conclusion" section of the guidelines document, which were not directly useful for generating the code requested in the prompt[cite: 7, 16, 18].
+* **Retriever Failure:** In Prompt #15, the retriever failed to pull the chunk containing the explicit naming convention. [cite_start]This led to a response that, while technically faithful to the *retrieved* context, was inconsistent with the behavior in other prompts[cite: 203]. This highlights a retriever weakness, as it couldn't consistently find the most important guideline.

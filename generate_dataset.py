@@ -131,7 +131,7 @@ def main():
     print("Initializing RAG system...")
     try:
         rag_system = RAGSystem()
-        rag_system.ingest("docs/Guidelines-non_std_complex.txt", "Guidelines-non_std_complex.txt")
+        rag_system.ingest("docs/Guidelines-std_complex.txt", "Guidelines-std_complex.txt")
         print("✓ RAG system initialized successfully")
     except Exception as e:
         print(f"Error initializing RAG system: {e}")
