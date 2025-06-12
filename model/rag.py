@@ -23,8 +23,8 @@ class RAGSystem:
     top_k = None
 
     def __init__(self, llm_model: str = "qwen2.5-coder:7b",
-                 chunk_size: int = 256,
-                 chunk_overlap: int = 30,
+                 chunk_size: int = 512,
+                 chunk_overlap: int = 60,
                  top_k: int = 5):
         self.model = ChatOllama(model=llm_model)
         self.text_splitter = RecursiveCharacterTextSplitter(
