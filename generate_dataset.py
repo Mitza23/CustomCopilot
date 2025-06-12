@@ -119,16 +119,6 @@ def main():
     parser = argparse.ArgumentParser(description="Process prompts through RAG system and save results")
     parser.add_argument("-i", "--input", default="evaluation/input.txt",
                         help="Path to input file containing prompts (one per line)")
-    parser.add_argument("-o", "--output", default="rag_results.txt",
-                        help="Output file path (default: rag_results.txt)")
-    parser.add_argument("--llm-model", default="qwen2.5-coder:7b",
-                        help="LLM model to use (default: qwen2.5-coder:7b)")
-    parser.add_argument("--chunk-size", type=int, default=256,
-                        help="Chunk size for text splitting (default: 256)")
-    parser.add_argument("--chunk-overlap", type=int, default=30,
-                        help="Chunk overlap for text splitting (default: 30)")
-    parser.add_argument("--no-metadata", action="store_true",
-                        help="Don't include timestamp and metadata in output")
 
     args = parser.parse_args()
 
@@ -140,12 +130,8 @@ def main():
     # Initialize RAG system
     print("Initializing RAG system...")
     try:
-        rag_system = RAGSystem(
-            llm_model=args.llm_model,
-            chunk_size=args.chunk_size,
-            chunk_overlap=args.chunk_overlap,
-            top_k=5
-        )
+        rag_system = RAGSystem()
+        rag_system.ingest("docs/Guidelines-non_std_complex.txt", "Guidelines-non_std_complex.txt")
         print("✓ RAG system initialized successfully")
     except Exception as e:
         print(f"Error initializing RAG system: {e}")
@@ -163,9 +149,9 @@ def main():
     # Process prompts
     results = process_prompts(rag_system, prompts)
 
-    output_file = f'evaluation/results/{args.input.split('/')[-1].split('.')[0]}_results.txt' if args.output == "rag_results.txt" else args.output
+    output_file = f'evaluation/results/{args.input.split('/')[-1].split('.')[0]}_results.txt'
     # Save results
-    save_results(results, output_file, include_metadata=not args.no_metadata)
+    save_results(results, output_file)
 
     # Print summary
     successful = sum(1 for _,_, response in results if not response.startswith("ERROR:"))
