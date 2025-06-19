@@ -74,7 +74,7 @@ def page():
         st.session_state["messages"] = []
         st.session_state["assistant"] = RAGSystem()
 
-    st.header("ChatPDF")
+    st.header("Copilot Customization Interface")
     st.subheader("Upload a document")
     st.file_uploader(
         "Upload document",
